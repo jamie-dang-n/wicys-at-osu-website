@@ -24,7 +24,7 @@ h1 {
 }
 
 /* Input Styling */
-.feedbackContainer {
+.formContainer {
     background-color: red;
     display: flex;
     flex-wrap: wrap;
@@ -34,14 +34,14 @@ h1 {
     justify-content: center;
 }
 
-.feedbackInputContainer {
+.formInputContainer {
     display: flex;
     width: 1000px;
     margin: 20px 0;
     align-items: center;
 }
 
-.feedbackInput {
+.formInput {
     width: 60%;
     margin-left: 10px;
     padding: 3px;
@@ -57,7 +57,7 @@ input[type=file] {
     width: 80%;
 }
 
-.feedbackInputElement {
+.formInputElement {
     margin: 0 5px;
     flex: 1 1 100%;
 }
@@ -66,11 +66,11 @@ input[type=file] {
     height: 10vh;
 }
 
-#messageInput .feedbackInput {
+#messageInput .formInput {
     height: 100%;
 }
 
-.feedbackInputLabel {
+.formInputLabel {
     width: 40%;
 }
 
