@@ -1,3 +1,4 @@
+/* Base Styling */
 html {
     background-color: #D9D9D9;
 
@@ -7,7 +8,7 @@ html {
 }   
 
 p {
-    font-size: 14px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -20,4 +21,74 @@ h1 {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.68px;
+}
+
+/* Input Styling */
+.feedbackContainer {
+    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedbackInputContainer {
+    display: flex;
+    width: 1000px;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.feedbackInput {
+    width: 60%;
+    margin-left: 10px;
+    padding: 3px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+}
+
+input[type=text], select, textarea {
+    width: 80%;
+}
+
+input[type=file] {
+    width: 80%;
+}
+
+.feedbackInputElement {
+    margin: 0 5px;
+    flex: 1 1 100%;
+}
+
+#messageInput {
+    height: 10vh;
+}
+
+#messageInput .feedbackInput {
+    height: 100%;
+}
+
+.feedbackInputLabel {
+    width: 40%;
+}
+
+/* fix submit button-- center it */
+
+
+/* Buttons Styling */
+input::file-selector-button {
+    flex-shrink: 0;
+    padding: 4px;
+    border-radius: 5px;
+    background: #ECEAEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.button {
+    flex-shrink: 0;
+    padding: 4px;
+    border-radius: 5px;
+    background: #ECEAEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
