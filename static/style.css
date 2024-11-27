@@ -1,0 +1,254 @@
+/* Base Styling */
+html {
+    background-color: #D9D9D9; /* Light gray background for the page */
+    font-family: "Work Sans", sans-serif;
+    color: #0E0E2C;
+}
+
+/* Typography */
+h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.26px;
+}
+
+/* Page header (title and dropdown filter) */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.filter-dropdown {
+    padding: 5px;
+    font-size: 14px;
+    color: #000;
+    background-color: #AAAAAA; /* White dropdown background */
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    padding: 20px;
+    background-color: #AAAAAA; /* Dark gray background for the slideshow */
+    border-radius: 10px;
+    margin: 20px auto 60px; /* Leaves space for buttons */
+    max-width: 800px;
+}
+
+/* Testimonial slides */
+.testimonial-slide {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start; /* Left-align content */
+    gap: 20px;
+    padding: 20px;
+    background-color: #AAAAAA; /* Dark gray background for the slide */
+    color: #000000; /* Black text for content */
+    border-radius: 10px;
+}
+
+.testimonial-slide.active {
+    display: flex;
+}
+
+/* Slide content */
+.testimonial-content {
+    display: flex;
+    flex-direction: row; /* Row layout for image and text */
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px;
+    width: 100%;
+}
+
+.testimonial-content div {
+    text-align: left; /* Left-align text */
+    flex-grow: 1; /* Allow text area to expand */
+    flex-basis: 60%; /* Text area takes 60% of the slide width */
+    max-width: 60%; /* Ensures text area doesn't grow too wide */
+}
+
+.testimonial-content p {
+    margin: 10px 0;
+    line-height: 1.6; /* Better spacing for paragraphs */
+    color: #000000; /* Ensure black text */
+}
+
+.testimonial-content img {
+    flex-basis: 40%; /* Image takes up 40% of the slide width */
+    max-width: 40%; /* Ensures image doesn't grow too wide */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 5px; /* Small rounding for a clean look */
+    object-fit: cover; /* Ensures image fills its area without distortion */
+}
+
+/* Navigation buttons */
+.slideshow-navigation {
+    position: absolute;
+    bottom: -40px; /* Moves buttons outside the container */
+    left: 50%;
+    transform: translateX(-50%); /* Centers buttons horizontally */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.slideshow-navigation button {
+    background-color: #444444; /* Slightly lighter gray for buttons */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.slideshow-navigation button:hover {
+    background-color: #555555;
+}
+
+/* Navbar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 100;
+    overflow: hidden;
+    background-color: #A6A9A9;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover, .dropdown:hover .dropbtn {
+    background-color: #6A6A6A;
+  }
+  
+  li.dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1;}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+h1 {
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.68px;
+}
+
+/* Input Styling */
+.formContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.formInputContainer {
+    display: flex;
+    width: 1000px;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.formInput {
+    width: 60%;
+    margin-left: 10px;
+    padding: 3px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+}
+
+input[type=text], select, textarea {
+    width: 80%;
+}
+
+input[type=file] {
+    width: 80%;
+}
+
+.formInputElement {
+    margin: 0 5px;
+    flex: 1 1 100%;
+}
+
+#messageInput {
+    height: 10vh;
+}
+
+#messageInput .formInput {
+    height: 100%;
+}
+
+.formInputLabel {
+    width: 40%;
+}
+
+/* FIXME: fix submit button-- center it */
+
+/* Buttons Styling */
+input::file-selector-button {
+    flex-shrink: 0;
+    padding: 4px;
+    border-radius: 5px;
+    background: #ECEAEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.button {
+    flex-shrink: 0;
+    padding: 4px;
+    border-radius: 5px;
+    background: #ECEAEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+input[type=submit] {
+    flex-shrink: 0;
+    padding: 4px;
+    border-radius: 5px;
+    background: #ECEAEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
