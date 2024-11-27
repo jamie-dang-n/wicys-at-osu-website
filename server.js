@@ -15,12 +15,25 @@ app.set("view engine", "handlebars")
 
 app.use(express.static('static'))
 
-// Display Homepage
+// Display Home page
 app.get('', function (req, res, next) {
     res.status(200).render("homePage")
 })
 
+// Display Events page
+app.get('/events', function (req, res, next) {
+    res.status(200).render("eventsPage")
+})
 
+// Display Contact page
+app.get('/contact', function (req, res, next) {
+    res.status(200).render("contactPage")
+})
+
+// Display Testimonies page
+app.get('/testimonials', function (req, res, next) {
+    res.status(200).render("testimoniesPage")
+})
 
 app.listen(port, function () {
     console.log("== Server is listening on port", port)
