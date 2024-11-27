@@ -179,7 +179,6 @@ h1 {
 
 /* Input Styling */
 .formContainer {
-    background-color: red;
     display: flex;
     flex-wrap: wrap;
     margin: 5px;
@@ -228,8 +227,7 @@ input[type=file] {
     width: 40%;
 }
 
-/* fix submit button-- center it */
-
+/* FIXME: fix submit button-- center it */
 
 /* Buttons Styling */
 input::file-selector-button {
@@ -240,6 +238,14 @@ input::file-selector-button {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .button {
+    flex-shrink: 0;
+    padding: 4px;
+    border-radius: 5px;
+    background: #ECEAEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+input[type=submit] {
     flex-shrink: 0;
     padding: 4px;
     border-radius: 5px;
