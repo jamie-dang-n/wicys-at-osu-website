@@ -47,8 +47,8 @@ p {
     max-width: 800px;
 }
 
-/* Testimonial slides */
-.testimonial-slide {
+/* Slideshow */
+.slide {
     display: none;
     flex-direction: column;
     align-items: flex-start; /* Left-align content */
@@ -59,12 +59,12 @@ p {
     border-radius: 10px;
 }
 
-.testimonial-slide.active {
+.slide.active {
     display: flex;
 }
 
 /* Slide content */
-.testimonial-content {
+.slide-content {
     display: flex;
     flex-direction: row; /* Row layout for image and text */
     align-items: flex-start; /* Align items at the top */
@@ -72,20 +72,20 @@ p {
     width: 100%;
 }
 
-.testimonial-content div {
+.slide-content div {
     text-align: left; /* Left-align text */
     flex-grow: 1; /* Allow text area to expand */
     flex-basis: 60%; /* Text area takes 60% of the slide width */
     max-width: 60%; /* Ensures text area doesn't grow too wide */
 }
 
-.testimonial-content p {
+.slide-content p {
     margin: 10px 0;
     line-height: 1.6; /* Better spacing for paragraphs */
     color: #000000; /* Ensure black text */
 }
 
-.testimonial-content img {
+.slide-content img {
     flex-basis: 40%; /* Image takes up 40% of the slide width */
     max-width: 40%; /* Ensures image doesn't grow too wide */
     height: auto; /* Maintains aspect ratio */
