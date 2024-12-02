@@ -42,14 +42,37 @@ p {
     border-radius: 5px;
 }
 
-/* Testimony Post */
+/* Testimonial - all page content */
+.testimonies-all-content {
+    display:flex;
+}
+
+/* Testimonial Page Filter Styling */
+
+#testimonies-filter-container {
+    background-color: green;
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+}
+
+/* Testimonial page title */
+.testimonial-header {
+    width: 100%;
+}
+
+/* Testimony Posts Container/Single Post */
 .testimonies-flex {
     display: flex;
 }
 
 .testimonial-post {
+    display: inline-block;
+    vertical-align: top;
+    height: 30vh;
     width: 40vw;
-    padding: 5px;
+    padding: 10px;
+    margin: 10px;
     background-color: red;
 }
 
