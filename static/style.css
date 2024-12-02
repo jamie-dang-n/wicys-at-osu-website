@@ -12,6 +12,11 @@ h1 {
     margin: 20px 0;
 }
 
+h2 {
+    padding: 0px;
+    margin: 0px;
+}
+
 p {
     font-size: 15px;
     font-style: normal;
@@ -35,6 +40,22 @@ p {
     background-color: #AAAAAA; /* White dropdown background */
     border: 1px solid #CCC;
     border-radius: 5px;
+}
+
+/* Testimony Post */
+.testimonies-flex {
+    display: flex;
+}
+
+.testimonial-post {
+    width: 40vw;
+    padding: 5px;
+    background-color: red;
+}
+
+.testimonial-content {
+    max-width: 50%;
+    background-color: blue;
 }
 
 /* Slideshow container */
