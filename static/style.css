@@ -243,6 +243,30 @@ footer img {
     justify-content: center;
 }
 
+.contact-instructions {
+    background-color: #6A6A6A;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.formDiv{
+    display:inline-flex;
+    justify-content: space-between;
+    background-color: #AAAAAA;
+    border-radius:10px;
+    padding-bottom:20px;
+    padding-right:30px;
+    padding-left:5%;
+} 
+
+.adjustWidth{
+    width:20% !important;
+}
+
 .formInput {
     width: 60%;
     margin-left: 10px;
@@ -319,27 +343,5 @@ input::file-selector-button:hover {
     color: #FFFFFF;
 }
 
-.contact-instructions {
-    background-color: #6A6A6A;
-    color: white;
-    padding: 20px;
-    margin-top: 20px;
-    width: 50%;
-    border-radius: 10px;
-    text-align: center;
-}
 
-.formDiv{
-    display:inline-flex;
-    justify-content: space-between;
-    background-color: #AAAAAA;
-    border-radius:10px;
-    padding-bottom:20px;
-    padding-right:30px;
-    padding-left:5%;
-} 
-
-.adjustWidth{
-    width:20% !important;
-}
 
