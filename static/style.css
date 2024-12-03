@@ -237,7 +237,7 @@ footer img {
 
 .formInputContainer {
     display: flex;
-    width: 1000px;
+    width: 100%; /* Changed the width to be more dynamic */
     margin: 20px 0;
     /* align-items: center; */
     justify-content: center;
@@ -316,4 +316,28 @@ input[type=submit]:hover {
 input::file-selector-button:hover {
     background: #9B7B9C;
     color: #FFFFFF;
+}
+
+.contact-instructions {
+    background-color: #6A6A6A;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.formDiv{
+    display:inline-flex;
+    justify-content: space-between;
+    background-color: #AAAAAA;
+    border-radius:10px;
+    padding-bottom:20px;
+    padding-right:30px;
+    padding-left:5%;
+} 
+
+.adjustWidth{
+    width:20% !important;
 }
