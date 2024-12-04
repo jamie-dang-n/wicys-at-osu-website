@@ -1,7 +1,7 @@
 
 
 
-const slides = document.querySelectorAll('.testimonial-slide');
+const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
 
 document.querySelector('.next-slide').addEventListener('click', () => {

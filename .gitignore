@@ -1315,3 +1315,4 @@ node_modules/.bin/handlebars
 node_modules/.bin/glob.ps1
 node_modules/.bin/glob.cmd
 node_modules/.bin/glob
+/node_modules
