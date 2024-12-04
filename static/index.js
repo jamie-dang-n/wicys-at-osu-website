@@ -15,6 +15,8 @@ document.querySelector('.prev-slide').addEventListener('click', () => {
 });
 
 // JS for Testimonies Form
+var allTestimonies = []
+
 function insertNewTestimony(name, desc, url, alt) {
     var testimony = Handlebars.templates.singleTestimony({
         url:url,
@@ -26,4 +28,26 @@ function insertNewTestimony(name, desc, url, alt) {
     var testimoniesSection = document.getElementById("testimonies-flex")
     testimoniesSection.insertAdjacentHTML("beforeend", testimony)
 }
+
+function handleTestimonyAcceptClick() {
+    var name = document.getElementById('testimonyName').value.trim()
+    var desc = document.getElementById('testimonyInput').value.trim()
+    var url = document.getElementById('testimonyImage').value
+
+    console.log("== name: ", name)
+
+    // URL can be null
+    if(!name || !desc) {
+        alert("Error: You must at least fill in the name and message field!")
+    } else {
+        allPosts.push({
+            desc: desc,
+            url: url,
+            name: name
+        })
+    }
+
+}
+
+
 
