@@ -189,31 +189,31 @@ ul {
     margin: 0;
     overflow: hidden;
     background-color: #A6A9A9;
-  }
+}
   
- #navImg {
+#navImg {
     float: left;
     height: 50px;
-  }
-  #navImg img {
+}
+#navImg img {
     height: 100%;
-  }
+}
 
-  li {
+li {
     float: right;
-  }
-  
-  li a {
+}
+
+li a {
     display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
-  
-  li a:hover{
+}
+
+li a:hover{
     background-color: #6A6A6A;
-  }
+}
 
 /* footer */
 footer {
