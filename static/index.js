@@ -15,7 +15,9 @@ document.querySelector('.prev-slide').addEventListener('click', () => {
 });
 
 // JS for Testimonies Form
-var allTestimonies = []
+var testimonySubmit = document.getElementById("testimonySubmit")
+
+testimonySubmit.addEventListener('click', handleTestimonyAcceptClick)
 
 function insertNewTestimony(name, desc, url, alt) {
     var testimony = Handlebars.templates.singleTestimony({
@@ -30,24 +32,18 @@ function insertNewTestimony(name, desc, url, alt) {
 }
 
 function handleTestimonyAcceptClick() {
-    var name = document.getElementById('testimonyName').value.trim()
-    var desc = document.getElementById('testimonyInput').value.trim()
-    var url = document.getElementById('testimonyImage').value
-
-    console.log("== name: ", name)
+    var name = document.getElementById("testimonyName").value
+    var desc = document.getElementById("testimonyInput").value
+    var url = document.getElementById("testimonyImage").value
 
     // URL can be null
-    if(!name || !desc) {
+    if(!(name && desc)) {
         alert("Error: You must at least fill in the name and message field!")
     } else {
-        allPosts.push({
-            desc: desc,
-            url: url,
-            name: name
-        })
+        insertNewTestimony(name, desc, url, desc)
     }
-
 }
+
 
 
 
