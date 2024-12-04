@@ -37,8 +37,44 @@ p {
     background-color: #AAAAAA;
     min-width: 200px;
     height: 310px;
-    margin: 20px 5px;
+    /* margin: 20px 5px; */
+    margin: 10px 10px auto 10px;
     border-radius: 5px;
+    padding: 20px;
+}
+
+#testimonies-filter-container h2 {
+    margin: 0px;
+}
+
+.filter-input-container {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.filter-input-element {
+    margin: 0 5px;
+    flex: 1 1 100%;
+    width: 70%;
+}
+
+.filter-input-label {
+    width: 30%;
+}
+
+.filter-input {
+    font-size: 14px;
+    min-width: 100%;
+    margin-left: 3px;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+#filter-update-button-container {
+    display: flex;
+    justify-content: center;
 }
 
 /* Testimonial page title */
