@@ -217,6 +217,7 @@ ul {
 
 /* footer */
 footer {
+    margin-top: 50px;
     text-align: center;
     background-color: #A6A9A9;
 }
@@ -301,6 +302,11 @@ input[type=file] {
 }
 
 #submitButtonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#contactSubmitButtonContainer {
     display: flex;
     justify-content: center;
 }
