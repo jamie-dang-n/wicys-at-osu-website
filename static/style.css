@@ -3,15 +3,20 @@ html {
     background-color: #D9D9D9; /* Light gray background for the page */
     font-family: "Work Sans", sans-serif;
     color: #0E0E2C;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* Typography */
 h1 {
     font-size: 34px;
     font-weight: 700;
-    color: #6A6A6A; /* Dark gray for the "Testimonials" title */
-    text-align: center;
     margin: 20px 0;
+}
+
+h2 {
+    padding: 0px;
+    margin: 0px;
 }
 
 p {
@@ -22,20 +27,115 @@ p {
     letter-spacing: -0.26px;
 }
 
-/* Page header (title and dropdown filter) */
-.page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Testimonial - all page content */
+.testimonies-all-content {
+    display:flex;
+}
+
+/* Testimonial Page Filter Styling */
+#testimonies-filter-container {
+    background-color: #AAAAAA;
+    min-width: 200px;
+    height: 310px;
+    /* margin: 20px 5px; */
+    margin: 10px 10px auto 10px;
+    border-radius: 5px;
     padding: 20px;
 }
 
-.filter-dropdown {
-    padding: 5px;
+#testimonies-filter-container h2 {
+    margin: 0px;
+}
+
+.filter-input-container {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.filter-input-element {
+    margin: 0 5px;
+    flex: 1 1 100%;
+    width: 70%;
+}
+
+.filter-input-label {
+    width: 30%;
+}
+
+.filter-input {
     font-size: 14px;
-    color: #000;
-    background-color: #AAAAAA; /* White dropdown background */
-    border: 1px solid #CCC;
+    min-width: 100%;
+    margin-left: 3px;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+#filter-update-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Testimonial page title */
+.testimonial-header {
+    width: 100%;
+    margin: 10px 0 5px 5px;
+    padding-top: 5px;
+    padding-left: 7px;
+}
+
+/* Testimony Posts Container*/
+.testimonies-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* single post container */
+.testimonial-post {
+    display: inline-block;
+    vertical-align: top;
+    height: 200px;
+    width: 340px;
+    padding: 10px;
+    margin: 0 10px 10px;
+    background-color: #AAAAAA;
+    border-radius: 5px;
+}
+
+/* container for text and image */
+.testimonial-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+/* testimony text and read more button styling */
+.testimony-text-col {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    padding-right: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.testimony-text{
+    width: 100%;
+}
+.button#readMore {
+    width: 40%;
+}
+
+/* testimony image styling */
+.testimony-pic {
+    max-width: 45%;
+    max-height: 100%;
+}
+
+.testimony-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
 }
 
@@ -49,8 +149,8 @@ p {
     max-width: 800px;
 }
 
-/* Testimonial slides */
-.testimonial-slide {
+/* Slideshow */
+.slide {
     display: none;
     flex-direction: column;
     align-items: flex-start; /* Left-align content */
@@ -61,12 +161,12 @@ p {
     border-radius: 10px;
 }
 
-.testimonial-slide.active {
+.slide.active {
     display: flex;
 }
 
 /* Slide content */
-.testimonial-content {
+.slide-content {
     display: flex;
     flex-direction: row; /* Row layout for image and text */
     align-items: flex-start; /* Align items at the top */
@@ -74,20 +174,20 @@ p {
     width: 100%;
 }
 
-.testimonial-content div {
+.slide-content div {
     text-align: left; /* Left-align text */
     flex-grow: 1; /* Allow text area to expand */
     flex-basis: 60%; /* Text area takes 60% of the slide width */
     max-width: 60%; /* Ensures text area doesn't grow too wide */
 }
 
-.testimonial-content p {
+.slide-content p {
     margin: 10px 0;
     line-height: 1.6; /* Better spacing for paragraphs */
     color: #000000; /* Ensure black text */
 }
 
-.testimonial-content img {
+.slide-content img {
     flex-basis: 40%; /* Image takes up 40% of the slide width */
     max-width: 40%; /* Ensures image doesn't grow too wide */
     height: auto; /* Maintains aspect ratio */
@@ -123,65 +223,46 @@ p {
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 100;
     overflow: hidden;
     background-color: #A6A9A9;
-  }
+}
   
-  li {
+#navImg {
+    float: left;
+    height: 50px;
+}
+#navImg img {
+    height: 100%;
+}
+
+li {
     float: right;
-  }
-  
-  li a, .dropbtn {
+}
+
+li a {
     display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
-  
-  li a:hover, .dropdown:hover .dropbtn {
-    background-color: #6A6A6A;
-  }
-  
-  li.dropdown {
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .dropdown-content a:hover {background-color: #f1f1f1;}
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
+}
 
-h1 {
-    font-size: 34px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.68px;
+li a:hover{
+    background-color: #6A6A6A;
+}
+
+/* footer */
+footer {
+    text-align: center;
+    background-color: #A6A9A9;
+}
+
+footer img {
+    padding-top: 5px;
 }
 
 /* Input Styling */
 .formContainer {
-    background-color: red;
     display: flex;
     flex-wrap: wrap;
     margin: 5px;
@@ -192,10 +273,36 @@ h1 {
 
 .formInputContainer {
     display: flex;
-    width: 1000px;
+    width: 100%; 
     margin: 20px 0;
-    align-items: center;
+    /* align-items: center; */
+    justify-content: center;
 }
+
+.contact-instructions {
+    background-color: #6A6A6A;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.formDiv{
+    display:inline-flex;
+    justify-content: space-between;
+    background-color: #AAAAAA;
+    border-radius:10px;
+    padding-bottom:20px;
+    padding-right:30px;
+    padding-left:5%;
+} 
+
+.adjustWidth{
+    width:20% !important;
+}
+
 
 .formInput {
     width: 60%;
@@ -203,6 +310,7 @@ h1 {
     padding: 3px;
     border: 1px solid #dadada;
     border-radius: 3px;
+    border-color: #AAAAAA;
 }
 
 input[type=text], select, textarea {
@@ -214,8 +322,14 @@ input[type=file] {
 }
 
 .formInputElement {
-    margin: 0 5px;
+    margin: 0 auto;
     flex: 1 1 100%;
+    
+}
+
+.formInputWidth{
+    margin-left: 40% !important;
+    margin-right: 50% !important;
 }
 
 #messageInput {
@@ -230,8 +344,10 @@ input[type=file] {
     width: 40%;
 }
 
-/* fix submit button-- center it */
-
+#submitButtonContainer {
+    display: flex;
+    justify-content: center;
+}
 
 /* Buttons Styling */
 input::file-selector-button {
@@ -241,10 +357,47 @@ input::file-selector-button {
     background: #ECEAEB;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+input[type=submit] {
+    flex-shrink: 0;
+    padding: 6px;
+    font-size: 20px;
+    width: 20vw;
+    border-radius: 5px;
+    background: #ECEAEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 .button {
     flex-shrink: 0;
     padding: 4px;
     border-radius: 5px;
     background: #ECEAEB;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-color: #ECEAEB;
+    border-style: solid;
+}
+
+.button:hover {
+    background: #9B7B9C;
+    color: #FFFFFF;
+    border-color: #9B7B9C;
+}
+input[type=submit]:hover {
+    background: #9B7B9C;
+    color: #FFFFFF;
+}
+
+.formDiv{
+    display:inline-flex;
+    justify-content: space-between;
+    background-color: #AAAAAA;
+    border-radius:10px;
+    padding-bottom:20px;
+    padding-right:30px;
+    padding-left:5%;
+    margin-bottom: 20px;
+} 
+
+.adjustWidth{
+    width:20% !important;
 }
