@@ -190,7 +190,7 @@ ul {
     overflow: hidden;
     background-color: #A6A9A9;
   }
-  
+
  #navImg {
     float: left;
     height: 50px;
@@ -202,7 +202,7 @@ ul {
   li {
     float: right;
   }
-  
+
   li a {
     display: inline-block;
     color: white;
@@ -210,7 +210,7 @@ ul {
     padding: 14px 16px;
     text-decoration: none;
   }
-  
+
   li a:hover{
     background-color: #6A6A6A;
   }
@@ -261,7 +261,7 @@ footer img {
     padding-bottom:20px;
     padding-right:30px;
     padding-left:5%;
-} 
+}
 
 .adjustWidth{
     width:20% !important;
@@ -343,5 +343,7 @@ input::file-selector-button:hover {
     color: #FFFFFF;
 }
 
-
-
+iframe{
+    display: flex;
+    justify-content: center;
+}
