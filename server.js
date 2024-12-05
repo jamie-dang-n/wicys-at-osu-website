@@ -51,7 +51,10 @@ app.post('/testimonials/addTestimony', function(req, res, next) {
 
 // Display Home page
 app.get('', function (req, res, next) {
-    res.status(200).render("homePage")
+    var context = {
+        firstTestimony: testimonyData[0].desc
+    }
+    res.status(200).render("homePage", context)
 })
 
 // Display Events page
@@ -66,7 +69,7 @@ app.get('/contact', function (req, res, next) {
 
 // Display Testimonies page
 app.get('/testimonials', function (req, res, next) {
-    context = {
+    var context = {
         testimonyData: testimonyData
     }
     res.status(200).render("testimoniesPage", context)

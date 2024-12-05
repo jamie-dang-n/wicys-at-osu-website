@@ -20,6 +20,7 @@ var testimonySubmit = document.getElementById("testimonySubmit")
 
 testimonySubmit.addEventListener('click', handleTestimonyAcceptClick)
 
+
 function handleTestimonyAcceptClick() {
     var name = document.getElementById('testimonyName').value.trim()
     var desc = document.getElementById('testimonyInput').value.trim()
@@ -82,3 +83,34 @@ function handleTestimonyAcceptClick() {
         
     }
 }
+
+
+
+/* CONTACTS FORM */
+//taken from assignment 3/5 (<- citation)
+var nameVal = document.getElementById("contactName");
+var email = document.getElementById("contactEmail");
+var phone = document.getElementById("contactPhone");
+var message = document.getElementById("contactInput");
+var submitButton = document.getElementById("contactSubmit");
+
+function clearInput(){
+    nameVal.value = '';
+    email.value = '';
+    phone.value = '';
+    message.value = '';
+}
+
+function submitContact(){
+    if (nameVal.value == ''|| email.value == '' || phone.value == '' || message.value == ''){
+        alert('All fields must be completed');
+    } else {
+        //alert('All fields are completed');
+        alert('Thanks for reaching out!');
+        clearInput();//clear
+    }
+}
+
+submitButton.addEventListener('click', submitContact);
+
+

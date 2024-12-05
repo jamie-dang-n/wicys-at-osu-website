@@ -27,6 +27,20 @@ p {
     letter-spacing: -0.26px;
 }
 
+/* Center page content */
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Home Page */
+.homePageContent {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
 /* Testimonial - all page content */
 .testimonies-all-content {
     display:flex;
@@ -122,6 +136,13 @@ p {
 .testimony-text{
     width: 100%;
 }
+
+.testimony-desc {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .button#readMore {
     width: 40%;
 }
@@ -225,9 +246,9 @@ ul {
     margin: 0;
     overflow: hidden;
     background-color: #A6A9A9;
-}
-  
-#navImg {
+  }
+
+ #navImg {
     float: left;
     height: 50px;
 }
@@ -237,17 +258,17 @@ ul {
 
 li {
     float: right;
-}
+  }
 
-li a {
+  li a {
     display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-}
+  }
 
-li a:hover{
+  li a:hover{
     background-color: #6A6A6A;
 }
 
