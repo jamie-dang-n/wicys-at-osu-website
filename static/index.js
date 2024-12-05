@@ -1,4 +1,7 @@
 // JS for Slides
+
+const slides = document.querySelectorAll('.slide');
+const Handlebars = require('handlebars');
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     const slides = document.querySelectorAll('.slide');
@@ -18,26 +21,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 // JS for Testimonies Form
-var testimonySubmit = document.getElementById("testimonySubmit");
-if (testimonySubmit) {
-    testimonySubmit.addEventListener('click', handleTestimonyAcceptClick);
-    console.log('Testimony submit button found and event listener added.');
-} else {
-    console.error('Testimony submit button not found.');
-}
+
+var testimonySubmit = document.getElementById("testimonySubmit")
+
+testimonySubmit.addEventListener('click', handleTestimonyAcceptClick)
 
 function handleTestimonyAcceptClick() {
-    var name = document.getElementById('testimonyName').value.trim();
-    var desc = document.getElementById('testimonyInput').value.trim();
-    var testimonyUrl = document.getElementById('testimonyImage').value;
-    var date = null;
-    var alt = "An image of WiCyS Club Activities!";
+    var name = document.getElementById('testimonyName').value.trim()
+    var desc = document.getElementById('testimonyInput').value.trim()
+    var testimonyUrl = document.getElementById('testimonyImage').value
 
-    if (!(name && desc)) {
-        alert("Error: You must fill in at least your name and message!");
+    // get current date
+    var dateObj = new Date();
+    var month   = dateObj.getUTCMonth() + 1; // months from 1-12
+    var day     = dateObj.getUTCDate();
+    var year    = dateObj.getUTCFullYear();
+
+    var date = month + "/" + day + "/" + year;
+    console.log("==date: ", date )
+    var alt = "An image of WiCyS Club Activities!"
+  
+    if(!(name && desc && testimonyUrl)) {
+        alert("Error: You must fill in all fields! If no image, use cat pic!")
     } else {
-        alert("name: " + name + " and desc: " + desc + " and testimonyURL: " + testimonyUrl);
-        var processUrl = "/testimonials/addTestimony";
+        alert("name: " + name + " and desc: " + desc + " and testimonyURL: " + testimonyUrl)
+        var processUrl = "/testimonials/addTestimony"
         fetch(processUrl, {
             method: "POST",
             body: JSON.stringify({
@@ -50,23 +58,40 @@ function handleTestimonyAcceptClick() {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(function (res) {
+        }).then(function(res) {
+            // First check for status 200
             if (res.status === 200) {
-                var testimonyTemplate = Handlebars.templates.singleTestimony;
-                var newTestimonyHTML = testimonyTemplate({
-                    url: testimonyUrl,
-                    desc: desc,
-                    name: name,
-                    alt: alt
+                res.json().then((data) => {
+                    // Check if the server's response is actually indicating success
+                    if (data.message === "Testimony saved successfully!") {
+                        // If the testimony was saved successfully
+                        console.log("here")
+                        var testimonyTemplate = Handlebars.templates.singleTestimony;
+                        var newTestimonyHTML = testimonyTemplate({
+                            url: testimonyUrl,
+                            desc: desc,
+                            name: name,
+                            alt: alt
+                        });
+                        var testimoniesSection = document.getElementById("testimonies-flex");
+                        testimoniesSection.insertAdjacentHTML("beforeend", newTestimonyHTML);
+                    } else {
+                        // Handle server-side error response (even if status is 200)
+                        alert("An error occurred saving the testimony: " + data.message);
+                        console.error("Server error details:", data); // Log the server error message for debugging
+                    }
                 });
-                var testimoniesSection = document.getElementById("testimonies-flex");
-                testimoniesSection.insertAdjacentHTML("beforeend", newTestimonyHTML);
             } else {
-                alert("An error occurred saving the testimony.");
+                alert("An unexpected error occurred with the status: " + res.status);
+                console.error("Unexpected response status:", res.status);
             }
-        }).catch(function (err) {
+        })
+        .catch(function(err) {
+            // Handle client-side errors (e.g., network issues)
             alert("An error occurred saving the testimony.");
+            console.error("Client-side error:", err); // Log the error object for debugging
         });
+     
     }
 }
 
