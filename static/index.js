@@ -19,12 +19,18 @@ var testimonySubmit = document.getElementById("testimonySubmit")
 
 testimonySubmit.addEventListener('click', handleTestimonyAcceptClick)
 
-
 function handleTestimonyAcceptClick() {
     var name = document.getElementById('testimonyName').value.trim()
     var desc = document.getElementById('testimonyInput').value.trim()
     var testimonyUrl = document.getElementById('testimonyImage').value
-    var date = null
+
+    // get current date
+    var dateObj = new Date();
+    var month   = dateObj.getUTCMonth() + 1; // months from 1-12
+    var day     = dateObj.getUTCDate();
+    var year    = dateObj.getUTCFullYear();
+
+    var date = month + "/" + day + "/" + year;
     var alt = "An image of WiCyS Club Activities!"
   
     if(!(name && desc)) {
