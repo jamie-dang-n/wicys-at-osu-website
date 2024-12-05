@@ -64,10 +64,12 @@ function clearInput(){
     message = '';
 }
 
-function contactAlert(){
+function submitContact(){
     if (nameVal.value == '' || email.value == '' || phone.value == '' || message.value == ''){
         alert('All fields must be completed');
-    }
+    } else {
+        //add this information to a database
 
-    //add this information to a database
+        clearInput();//clear
+    }
 }
