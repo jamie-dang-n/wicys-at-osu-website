@@ -1,6 +1,9 @@
 var path = require('path')
+var filePath = path.join(__dirname, 'testimonyData.json');
 var express = require('express')
 var exphbs = require('express-handlebars')
+var fs = require('fs');
+var Handlebars = require('handlebars');
 
 var testimonyData = require("./testimonyData.json")
 
@@ -17,6 +20,10 @@ app.set("view engine", "handlebars")
 
 app.use(express.static('static'))
 
+app.use(express.json());
+
+
+
 // Server endpoint for receiving new testimony info
 app.post('/testimonials/addTestimony', function(req, res, next) {
 
@@ -30,18 +37,16 @@ app.post('/testimonials/addTestimony', function(req, res, next) {
     }) 
 
     // Write to testimonyData.json
-    fs.writeFile(
-        __dirname + "/testimonyData.json",
-        JSON.stringify(testimonyData, null, 2),
-        function(err, result) {
-            if (err) {
-                res.status(200).send()
-            } else {
-                res.status(500).send("Server error. Try again soon.")
-            }
+    fs.writeFile(filePath, JSON.stringify(testimonyData, null, 2), function(err) {
+        if (err) {
+            console.error("Error writing to file:", err);  // Log the error for debugging
+            return res.status(500).json({ message: "Server error. Try again soon." }); // Send a JSON response with error message
+        } else {
+            return res.status(200).json({ message: "Testimony saved successfully!" }); // Success response
         }
-    )
-    next()
+    });
+
+    // next()
   }) 
 
 // Display Home page
