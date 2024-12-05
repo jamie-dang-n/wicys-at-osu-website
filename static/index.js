@@ -35,8 +35,8 @@ function handleTestimonyAcceptClick() {
     console.log("==date: ", date )
     var alt = "An image of WiCyS Club Activities!"
   
-    if(!(name && desc)) {
-        alert("Error: You must fill in at least your name and message!")
+    if(!(name && desc && testimonyUrl)) {
+        alert("Error: You must fill in all fields! If no image, use cat pic!")
     } else {
         alert("name: " + name + " and desc: " + desc + " and testimonyURL: " + testimonyUrl)
         var processUrl = "/testimonials/addTestimony"
