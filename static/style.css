@@ -27,6 +27,20 @@ p {
     letter-spacing: -0.26px;
 }
 
+/* Center page content */
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Home Page */
+.homePageContent {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
 /* Testimonial - all page content */
 .testimonies-all-content {
     display:flex;
@@ -122,6 +136,13 @@ p {
 .testimony-text{
     width: 100%;
 }
+
+.testimony-desc {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .button#readMore {
     width: 40%;
 }
