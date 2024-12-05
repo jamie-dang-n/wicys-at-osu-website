@@ -31,9 +31,8 @@ function handleTestimonyAcceptClick() {
     if(!(name && desc)) {
         alert("Error: You must fill in at least your name and message!")
     } else {
-        alert("name: " + name + " and desc: " + desc + " and testimonyURL: " + testimonyUrl)
+        // alert("name: " + name + " and desc: " + desc + " and testimonyURL: " + testimonyUrl)
         var processUrl = "/testimonials/addTestimony"
-        
         
         fetch(processUrl, {
             method: "POST",
