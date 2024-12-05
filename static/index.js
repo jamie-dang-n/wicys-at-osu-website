@@ -44,32 +44,32 @@ function insertNewTestimony(name, desc, url, alt) {
 
 
 /* CONTACTS FORM */
+//taken from assignment 3/5 (<- citation)
 var nameVal = document.getElementById("contactName");
 var email = document.getElementById("contactEmail");
 var phone = document.getElementById("contactPhone");
 var message = document.getElementById("contactInput");
-
-//taking code from assignment 3/5 for modal and text clearing
-function openModal(){
-    document.getElementById("contacts-modal").classList.remove("hidden");
-    document.getElementById("modal-backdrop").classList.remove("hidden");
-}
-
-document.getElementById("contacts-button").onclick = openModal;
+var submitButton = document.getElementById("contactSubmit");
 
 function clearInput(){
-    nameVal = '';
-    email = '';
-    phone = '';
-    message = '';
+    nameVal.value = '';
+    email.value = '';
+    phone.value = '';
+    message.value = '';
 }
 
 function submitContact(){
-    if (nameVal.value == '' || email.value == '' || phone.value == '' || message.value == ''){
+    if (nameVal.value == ''|| email.value == '' || phone.value == '' || message.value == ''){
         alert('All fields must be completed');
     } else {
-        //add this information to a database
-
+        //alert('All fields are completed');
+        alert('Thanks for reaching out!');
         clearInput();//clear
     }
 }
+
+submitButton.addEventListener('click', submitContact);
+//alert('Thanks for reaching out!');
+//console.log("rawwr")
+
+//document.forms.namedItem("contactSubmit").onclick = submitContact(); //;-; idk hwo to do this
