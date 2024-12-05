@@ -32,6 +32,7 @@ function handleTestimonyAcceptClick() {
     var year    = dateObj.getUTCFullYear();
 
     var date = month + "/" + day + "/" + year;
+    console.log("==date: ", date )
     var alt = "An image of WiCyS Club Activities!"
   
     if(!(name && desc)) {
