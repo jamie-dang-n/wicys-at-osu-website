@@ -1,5 +1,6 @@
 // JS for Slides
 const slides = document.querySelectorAll('.slide');
+const Handlebars = require('handlebars);')
 let currentSlide = 0;
 
 document.querySelector('.next-slide').addEventListener('click', () => {
@@ -67,9 +68,6 @@ function submitContact(){
         clearInput();//clear
     }
 }
-
-submitButton.addEventListener('click', submitContact);
-//alert('Thanks for reaching out!');
-//console.log("rawwr")
-
-//document.forms.namedItem("contactSubmit").onclick = submitContact(); //;-; idk hwo to do this
+if (submitButton){
+    submitButton.addEventListener('click', submitContact);
+}
