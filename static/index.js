@@ -1,5 +1,6 @@
 // JS for Slides
 const slides = document.querySelectorAll('.slide');
+const Handlebars = require('handlebars);')
 let currentSlide = 0;
 
 document.querySelector('.next-slide').addEventListener('click', () => {
@@ -108,7 +109,3 @@ function submitContact(){
         clearInput();//clear
     }
 }
-
-submitButton.addEventListener('click', submitContact);
-
-
