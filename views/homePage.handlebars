@@ -1,26 +1,27 @@
-<div class="homePageContent">
-  {{> slideshow}}
 
-        <h1>
-            About WiCyS @ Oregon State University
-        </h1>
-        <p>
-            Our mission is to help build a diverse cybersecurity workforce by facilitating the recruitment, retention, and advancement of women in cybersecurity. However, this club is not exclusive to women or those identify as women, we accept all allies!
-        </p>
+<div class="homePageContent contentContainer">
+    {{> slideshow}}
+    <h1>
+        About WiCyS @ Oregon State University
+    </h1>
+    <p>
+        Our mission is to help build a diverse cybersecurity workforce by facilitating the recruitment, retention, and advancement of women in cybersecurity. However, this club is not exclusive to women or those identify as women, we accept all allies!
+    </p>
 
-        <h1>
-            Testimonies
-        </h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper  varius ipsum, id pellentesque mi consectetur ac. Curabitur eu nisi nec  justo accumsan tincidunt. Morbi feugiat cursus lacus id dictum. Maecenas porttitor feugiat eros quis suscipit. Etiam feugiat purus eget quam  tristique, sed mattis quam lobortis. Mauris interdum viverra libero,  congue porta urna vestibulum a. Ut laoreet ornare urna, eu vehicula est  condimentum imperdiet. Quisque leo velit, scelerisque nec hendrerit sed, varius et nisl. In ac efficitur orci. Suspendisse vestibulum mi vel  finibus elementum. ...
-        </p>
-        <a href="/testimonials">See more Testimonies!</a>
-
-        <h1>
-            Give Us Your Feedback!
-        </h1>
-        <div class="formDiv">
-            <form class="formContainer">
+    <h1>
+        Testimonies
+    </h1>
+    <p>
+        {{firstTestimony}}
+    </p>
+    <a href="/testimonials">See more Testimonies!</a>
+    
+    <h1>
+        Give Us Your Feedback!
+    </h1>
+    <div class="centerForm">
+        <div class="formDiv">    
+            <form class="formContainer" id="testimonyForm">
                 <div class="formInputContainer">
                     <label for="Name" class="formInputLabel">Name:</label>
                     <div class="formInputElement">
@@ -31,22 +32,23 @@
                 <div class="formInputContainer">
                     <label for="Message" class="formInputLabel">Message:</label>
                     <div class="formInputElement" id="messageInput">
-                        <input type="text" id="testimonyInput" name="testimonyInput" class="formInput">
+                        <textarea id="testimonyInput" name="testimonyInput" class="formInput" wrap="soft"></textarea>
                     </div>
                 </div>
 
                 <div class="formInputContainer">
-                    <label for="Image" class="formInputLabel">Image (Optional):</label>
+                    <label for="Image" class="formInputLabel">Image:</label>
                     <div class="formInputElement">
-                        <input type="file" id="testimonyImage" name="testimonyImage" class="formInput">
+                        <input type="text" id="testimonyImage" name="testimonyImage" class="formInput">
                     </div>
                 </div>
 
                 <div class="formInputContainer">
-                    <div class="formInputElement formInputWidth">
-                        <input type="submit" value="Submit" class="button" id="testimonySubmit">
+                    <div class="formInputElement formInputWidth" id="submitButtonContainer">
+                        <input type="button" value="Submit" class="button" id="testimonySubmit">
                     </div>
                 </div>
             </form>
-     </div>
+        </div>
+    </div>
 </div>
