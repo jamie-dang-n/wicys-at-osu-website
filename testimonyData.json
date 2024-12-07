@@ -23,15 +23,22 @@
   {
     "name": "1",
     "desc": "1",
-    "url": "",
-    "alt": "no image provided",
+    "url": "1",
+    "alt": "An image of WiCyS Club Activities!",
     "date": null
   },
   {
-    "name": "asdfjkhdsfhsdlfk;jadsfkjl",
-    "desc": "dslk;jflasdkfjadksfjadsfjladsfjlkadsfjkl;adsfsadfjdsf;lkadsfjkladsfjakjdsfkladsfjklasdfklajdsfklajsdfkl;ajfkljasdfkljksdfljakldsfjkalsdfjlaksdfjakl;dsfjasfjkljdsf",
-    "url": "",
+    "name": "1",
+    "desc": "1",
+    "url": "1",
     "alt": "An image of WiCyS Club Activities!",
-    "date": null
+    "date": "12/7/2024"
+  },
+  {
+    "name": "1",
+    "desc": "1",
+    "url": "",
+    "alt": "No image provided.",
+    "date": "12/7/2024"
   }
 ]

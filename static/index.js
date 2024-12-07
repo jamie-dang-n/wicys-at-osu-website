@@ -15,24 +15,26 @@ document.querySelector('.prev-slide').addEventListener('click', () => {
 });
 
 // JS for Testimonies Form
-//const Handlebars = require('handlebars');
 var testimonySubmit = document.getElementById("testimonySubmit")
 
 testimonySubmit.addEventListener('click', handleTestimonyAcceptClick)
-
 
 function handleTestimonyAcceptClick() {
     var name = document.getElementById('testimonyName').value.trim()
     var desc = document.getElementById('testimonyInput').value.trim()
     var testimonyUrl = document.getElementById('testimonyImage').value
-    var date = null
     var alt = "An image of WiCyS Club Activities!"
+    // Date field is already covered in server.js
   
     if(!(name && desc)) {
         alert("Error: You must fill in at least your name and message!")
     } else {
-        // alert("name: " + name + " and desc: " + desc + " and testimonyURL: " + testimonyUrl)
         var processUrl = "/testimonials/addTestimony"
+
+        // Update alt to match if there was no image provided
+        if (testimonyUrl == "") {
+            alt = "No image provided."
+        }
         
         fetch(processUrl, {
             method: "POST",
@@ -40,8 +42,8 @@ function handleTestimonyAcceptClick() {
                 url: testimonyUrl,
                 desc: desc,
                 name: name,
-                date: date,
                 alt: alt
+                // Date field is already covered in server.js
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -53,7 +55,6 @@ function handleTestimonyAcceptClick() {
                     // Check if the server's response is actually indicating success
                     if (data.message === "Testimony saved successfully!") {
                         // If the testimony was saved successfully
-                        console.log("here")
                         var testimonyTemplate = Handlebars.templates.singleTestimony;
                         var newTestimonyHTML = testimonyTemplate({
                             url: testimonyUrl,
@@ -82,8 +83,6 @@ function handleTestimonyAcceptClick() {
         
     }
 }
-
-
 
 /* CONTACTS FORM */
 //taken from assignment 3/5 (<- citation)
