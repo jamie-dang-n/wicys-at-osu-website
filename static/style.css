@@ -98,11 +98,6 @@ p {
     justify-content: center;
 }
 
-/* 404 CSS */
-.errorContainer {
-    min-height: 80%;
-}
-
 /* Testmimony Modal Menu - Read More*/
 /* Referenced from CS290 Assignment 5 */
 .hidden {
