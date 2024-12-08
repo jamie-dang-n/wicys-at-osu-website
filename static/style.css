@@ -30,10 +30,6 @@ p {
     letter-spacing: -0.26px;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
 #contact-info a{
     color: #bfabc0;
 }
@@ -100,6 +96,11 @@ a:hover {
 #filter-update-button-container {
     display: flex;
     justify-content: center;
+}
+
+/* 404 CSS */
+.errorContainer {
+    min-height: 80%;
 }
 
 /* Testmimony Modal Menu - Read More*/

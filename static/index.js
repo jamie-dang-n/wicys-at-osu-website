@@ -136,8 +136,8 @@ function submitContact(){
     }
 }
 
-window.addEventListener('DOMContentLoaded', function() {
-    submitButton.addEventListener("submit", submitContact)
-})
+
+submitButton.addEventListener("submit", submitContact)
+
 
 
