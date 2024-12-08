@@ -70,6 +70,11 @@ app.get('/testimonials', function (req, res, next) {
     res.status(200).render("testimoniesPage", context)
 })
 
+// 404 page
+app.get('*', function (req, res, next) {
+    res.status(404).render("404Page")
+})
+
 app.listen(port, function () {
     console.log("== Server is listening on port", port)
 })
