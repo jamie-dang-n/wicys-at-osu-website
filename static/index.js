@@ -90,9 +90,11 @@ function handleTestimonyAcceptClick() {
 
 // Handle Opening Modal Menu - add the modal object to the DOM
 // Referenced from CS290 Assignment 5
+window.addEventListener('DOMContentLoaded', function() {
+    var readMoreButtons = document.querySelectorAll(".readMore")
+    console.log(readMoreButtons)
+})
 
-// var readMoreButtons = document.querySelectorAll("button.readMore")
-// console.log(readMoreButtons)
 
 function showReadMoreModal() {
     var readMoreModal = document.getElementById('read-more-modal')

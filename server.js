@@ -6,6 +6,7 @@ var fs = require('fs');
 var Handlebars = require('handlebars');
 
 var testimonyData = require("./testimonyData.json")
+var slidesData = require("./images.json")
 
 var app = express()
 var port = process.env.PORT || 3000
@@ -47,9 +48,19 @@ app.post('/testimonials/addTestimony', function(req, res, next) {
 // Display Home page
 app.get('', function (req, res, next) {
     var context = {
-        firstTestimony: testimonyData[0].desc
+        firstTestimony: testimonyData[0].desc,
+        slides: slidesData
     }
     res.status(200).render("homePage", context)
+})
+
+// Referenced ChatGPT to make this Handlebars helper-- make only
+// the first slide active.
+Handlebars.registerHelper('addClassToFirst', function(index, options) {
+    if (index === 0) {
+        return options.fn(this) // apply the block to the first element
+    }
+    return '' // return nothing for other elements
 })
 
 // Display Events page
@@ -70,7 +81,7 @@ app.get('/testimonials', function (req, res, next) {
     res.status(200).render("testimoniesPage", context)
 })
 
-// 404 page
+// Display 404 page
 app.get('*', function (req, res, next) {
     res.status(404).render("404Page")
 })

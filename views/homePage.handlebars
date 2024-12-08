@@ -1,6 +1,16 @@
 
 <div class="homePageContent contentContainer">
-    {{> slideshow}}
+    <section class="slideshow-container">
+        {{#each slides}}
+            {{> slideshow}}
+        {{/each}}
+        <!-- Navigation Buttons -->
+        <div class="slideshow-navigation">
+            <button class="prev-slide">&#8592;</button>
+            <button class="next-slide">&#8594;</button>
+        </div>
+    </section>
+    
     <h1>
         About WiCyS @ Oregon State University
     </h1>
