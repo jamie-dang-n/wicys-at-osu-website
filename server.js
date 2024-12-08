@@ -25,15 +25,12 @@ app.use(express.json());
 // Server endpoint for receiving new testimony info
 app.post('/testimonials/addTestimony', function(req, res, next) {
     // store data into the database
-
-    // Get current date - https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
-    var today = new Date().toLocaleDateString()
     testimonyData.push({
         name: req.body.name,
         desc: req.body.desc,
         url: req.body.url,
         alt: req.body.alt,
-        date: today
+        date: req.body.date
     }) 
 
     // Write to testimonyData.json
