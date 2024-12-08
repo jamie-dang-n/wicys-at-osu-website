@@ -395,6 +395,16 @@ footer img {
     justify-content: center;
 }
 
+.contact-header {
+    background-color: #6A6A6A;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+}
+
 .contact-instructions {
     background-color: #6A6A6A;
     color: white;
@@ -437,25 +447,18 @@ footer img {
     width: 80%;
 }
 
-input[type=text], select, textarea {
+#contactInput {
+    resize: none;
     width: 80%;
 }
 
-input[type=file] {
+input[type=text], select, textarea {
     width: 80%;
 }
 
 .formInputElement {
     margin: 0 5px;
     flex: 1 1 100%;
-}
-
-#messageInput {
-    height: 10vh;
-}
-
-#messageInput .formInput {
-    height: 100%;
 }
 
 .formInputLabel {

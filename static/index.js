@@ -113,26 +113,27 @@ function hideReadMoreModal() {
 
 /* CONTACTS FORM */
 //taken from assignment 3/5 (<- citation)
-var nameVal = document.getElementById("contactName")
-var email = document.getElementById("contactEmail")
-var phone = document.getElementById("contactPhone")
-var message = document.getElementById("contactInput")
-var submitButton = document.getElementById("contactSubmit")
+var nameVal = document.getElementById("contactName");
+var email = document.getElementById("contactEmail");
+var phone = document.getElementById("contactPhone");
+var message = document.getElementById("contactInput");
+var submitButton = document.getElementById("contactSubmit");
 
 function clearInput(){
-    nameVal.value = ''
-    email.value = ''
-    phone.value = ''
-    message.value = ''
+    nameVal.value = '';
+    email.value = '';
+    phone.value = '';
+    message.value = '';
 }
 
 function submitContact(){
+    console.log("here")
     if (nameVal.value == ''|| email.value == '' || phone.value == '' || message.value == ''){
-        alert('All fields must be completed')
+        alert('All fields must be completed');
     } else {
         //alert('All fields are completed');
-        alert('Thanks for reaching out!')
-        clearInput() //clear
+        alert('Thanks for reaching out!');
+        clearInput();//clear
     }
 }
 
