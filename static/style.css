@@ -29,6 +29,20 @@ p {
     letter-spacing: -0.26px;
 }
 
+a:link {
+    color: purple;
+    text-decoration: none;
+  }
+
+a:visited {
+    color: green;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* Center page content */
 .contentContainer {
     display: flex;
@@ -330,7 +344,7 @@ ul {
     top: 0;
     left: 0;
 }
-  
+
 #navImg {
     float: left;
     margin-left: 20px;
@@ -394,7 +408,6 @@ footer img {
     /* align-items: center; */
     justify-content: center;
 }
-
 .contact-header {
     background-color: #6A6A6A;
     color: white;
@@ -405,14 +418,14 @@ footer img {
     text-align: center;
 }
 
-.contact-instructions {
+.contact-instructions{
     background-color: #6A6A6A;
     color: white;
     padding: 20px;
     margin-top: 20px;
-    width: 50%;
+    width: 60%;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .centerForm {
@@ -428,7 +441,7 @@ footer img {
     padding-right:30px;
     padding-left:5%;
     margin: auto;
-} 
+}
 
 .adjustWidth{
     width:20% !important;
