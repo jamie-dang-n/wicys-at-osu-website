@@ -131,11 +131,13 @@ function submitContact(){
     if (nameVal.value == ''|| email.value == '' || phone.value == '' || message.value == ''){
         alert('All fields must be completed');
     } else {
-        //alert('All fields are completed');
         alert('Thanks for reaching out!');
         clearInput();//clear
     }
 }
 
-submitButton.addEventListener('click', submitContact)
+window.addEventListener('DOMContentLoaded', function() {
+    submitButton.addEventListener("submit", submitContact)
+})
+
 
