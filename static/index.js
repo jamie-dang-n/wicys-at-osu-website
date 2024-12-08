@@ -1,6 +1,5 @@
 // JS for Slides
 const slides = document.querySelectorAll('.slide');
-const Handlebars = require('handlebars);')
 let currentSlide = 0;
 
 document.querySelector('.next-slide').addEventListener('click', () => {
@@ -21,11 +20,14 @@ var testimonySubmit = document.getElementById("testimonySubmit")
 testimonySubmit.addEventListener('click', handleTestimonyAcceptClick)
 
 function handleTestimonyAcceptClick() {
+    // Get current date - https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
+    var today = new Date().toLocaleDateString()
+
     var name = document.getElementById('testimonyName').value.trim()
     var desc = document.getElementById('testimonyInput').value.trim()
     var testimonyUrl = document.getElementById('testimonyImage').value
+    var date = today
     var alt = "An image of WiCyS Club Activities!"
-    // Date field is already covered in server.js
   
     if(!(name && desc)) {
         alert("Error: You must fill in at least your name and message!")
@@ -43,8 +45,8 @@ function handleTestimonyAcceptClick() {
                 url: testimonyUrl,
                 desc: desc,
                 name: name,
+                date: date,
                 alt: alt
-                // Date field is already covered in server.js
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -56,6 +58,7 @@ function handleTestimonyAcceptClick() {
                     // Check if the server's response is actually indicating success
                     if (data.message === "Testimony saved successfully!") {
                         // If the testimony was saved successfully
+                        console.log("here")
                         var testimonyTemplate = Handlebars.templates.singleTestimony;
                         var newTestimonyHTML = testimonyTemplate({
                             url: testimonyUrl,
@@ -85,6 +88,29 @@ function handleTestimonyAcceptClick() {
     }
 }
 
+// Handle Opening Modal Menu - add the modal object to the DOM
+// Referenced from CS290 Assignment 5
+
+// var readMoreButtons = document.querySelectorAll("button.readMore")
+// console.log(readMoreButtons)
+
+function showReadMoreModal() {
+    var readMoreModal = document.getElementById('read-more-modal')
+    var modalBackdrop = document.getElementById('modal-backdrop')
+
+    readMoreModal.classList.remove('hidden')
+    modalBackdrop.classList.remove('hidden')
+}
+
+// Handle Closing Modal Menu - remove modal object from the DOM
+function hideReadMoreModal() {
+    var readMoreModal = document.getElementById('read-more-modal')
+    var modalBackdrop = document.getElementById('modal-backdrop')
+
+    readMoreModal.classList.add('hidden')
+    modalBackdrop.classList.add('hidden')
+}
+
 /* CONTACTS FORM */
 //taken from assignment 3/5 (<- citation)
 var nameVal = document.getElementById("contactName");
@@ -101,6 +127,7 @@ function clearInput(){
 }
 
 function submitContact(){
+    console.log("here")
     if (nameVal.value == ''|| email.value == '' || phone.value == '' || message.value == ''){
         alert('All fields must be completed');
     } else {
@@ -109,3 +136,6 @@ function submitContact(){
         clearInput();//clear
     }
 }
+
+submitButton.addEventListener('click', submitContact)
+
