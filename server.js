@@ -22,11 +22,8 @@ app.use(express.static('static'))
 
 app.use(express.json());
 
-
-
 // Server endpoint for receiving new testimony info
 app.post('/testimonials/addTestimony', function(req, res, next) {
-
     // store data into the database
     testimonyData.push({
         name: req.body.name,
@@ -45,8 +42,6 @@ app.post('/testimonials/addTestimony', function(req, res, next) {
             return res.status(200).json({ message: "Testimony saved successfully!" }); // Success response
         }
     });
-
-    // next()
   }) 
 
 // Display Home page
