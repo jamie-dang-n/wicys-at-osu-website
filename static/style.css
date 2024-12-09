@@ -326,7 +326,7 @@ p {
     background-color: #444444; /* Slightly lighter gray for buttons */
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 8px; /* makes buttons look slightly less stretched */
     cursor: pointer;
     border-radius: 100%;
 }
@@ -343,44 +343,102 @@ ul {
     width: 100%;
     overflow: hidden;
     background-color: #A6A9A9;
-    top: 0;
-    left: 0;
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    justify-content: space-between; /* Space between logo and menu items */
 }
 
 #navImg {
-    float: left;
+    display: flex;
+    align-items: center;
+    height: 48px; /* Fixed height to prevent stretching */
     margin-left: 20px;
-    height: 48px; /* hover starts not filling full space if above 48px */
 }
 #navImg img {
     height: 100%;
-    line-height: 70px; /* whatever the fixed height of the bar is */
-    vertical-align: middle;
-}
-
-.navImg-responsive {
-    height: auto;
-    width: auto;
-    max-height: 70px;
-    max-width: 250px;
+    width: auto;  /* Maintain aspect ratio */
+    max-width: 250px; /* Ensure it does not stretch beyond this width */
 }
 
 li {
-    float: right;
-  }
+    float: none;
+    margin: 0; /* Remove margin between list items */
+}
 
 li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 8px; /* Adjust padding to bring items closer */
     text-decoration: none;
-  }
+}
 
-  li a:hover{
+li a:hover {
     background-color: #6A6A6A;
     height: 100%;
 }
+
+/* Ensure menu items are close together and on the right */
+ul {
+    justify-content: space-between;
+}
+ul .navbar-items {
+    display: flex;
+    gap: 10px; /* Adjust gap between buttons */
+    margin-right: 20px; /* Space on the right */
+}
+
+/* Hide checkbox by default */
+#menu-toggle {
+    display: none;
+}
+
+/* Hamburger Menu */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #AAA;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    ul {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+    li {
+        float: none;
+        width: 100%;
+        margin: 5px 0;
+    }
+    #navImg {
+        height: auto; /* Adjust height to auto for responsive */
+        margin: auto;
+        display: block;
+    }
+    #navImg img {
+        height: auto; /* Maintain aspect ratio */
+        width: auto;  /* Maintain aspect ratio */
+        max-height: 70px;
+        max-width: 100px; /* Ensure the logo does not stretch too much */
+    }
+    .menu-icon {
+        display: block;
+    }
+    input[type="checkbox"]:checked ~ ul {
+        display: flex;
+    }
+}
+
 
 /* footer */
 footer {

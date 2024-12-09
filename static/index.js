@@ -161,4 +161,8 @@ function submitContact(){
 submitButton.addEventListener("submit", submitContact)
 
 
+/* Navbar hamburger menu interaction */
+    document.querySelector('.menu-icon').addEventListener('click', function() {
+        document.querySelector('.navbar ul').classList.toggle('active');
+    });
 
