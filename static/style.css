@@ -44,8 +44,8 @@ p {
 
 /* Home Page */
 .homePageContent {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 /* Testimonial - all page content */
@@ -361,8 +361,7 @@ ul {
 }
 
 li {
-    float: none;
-    margin: 0; /* Remove margin between list items */
+    float: right;
 }
 
 li a {
@@ -374,8 +373,8 @@ li a {
 }
 
 li a:hover {
-    background-color: #6A6A6A;
-    height: 100%;
+background-color: #6A6A6A;
+height: 100%;
 }
 
 /* Ensure menu items are close together and on the right */
