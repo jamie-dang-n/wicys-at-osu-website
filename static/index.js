@@ -183,3 +183,4 @@ if (menuIcon && navbarMenu) {
 } else {
     console.error("Navbar menu or menu icon not found. Ensure the correct class names are applied.");
 }
+
