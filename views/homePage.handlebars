@@ -1,6 +1,16 @@
 
 <div class="homePageContent contentContainer">
-    {{> slideshow}}
+    <section class="slideshow-container">
+        {{#each slides}}
+            {{> slideshow}}
+        {{/each}}
+        <!-- Navigation Buttons -->
+        <div class="slideshow-navigation">
+            <button class="prev-slide">&#8592;</button>
+            <button class="next-slide">&#8594;</button>
+        </div>
+    </section>
+    
     <h1>
         About WiCyS @ Oregon State University
     </h1>
@@ -31,13 +41,13 @@
 
                 <div class="formInputContainer">
                     <label for="Message" class="formInputLabel">Message:</label>
-                    <div class="formInputElement" id="messageInput">
-                        <textarea id="testimonyInput" name="testimonyInput" class="formInput" wrap="soft"></textarea>
+                    <div class="formInputElement">
+                        <textarea id="testimonyInput" name="testimonyInput" class="formInput" wrap="soft" rows="4"></textarea>
                     </div>
                 </div>
 
                 <div class="formInputContainer">
-                    <label for="Image" class="formInputLabel">Image (Optional):</label>
+                    <label for="Image" class="formInputLabel">Image:</label>
                     <div class="formInputElement">
                         <input type="text" id="testimonyImage" name="testimonyImage" class="formInput">
                     </div>
@@ -45,7 +55,7 @@
 
                 <div class="formInputContainer">
                     <div class="formInputElement formInputWidth" id="submitButtonContainer">
-                        <input type="button" value="Submit" class="button" id="testimonySubmit">
+                        <input type="button" value="Submit" class="buttons" id="testimonySubmit">
                     </div>
                 </div>
             </form>
