@@ -107,8 +107,8 @@ p {
 .modal-dialog{
     width: auto;
     max-width: 600px;
-    min-width: 350px;
-    min-height: 300px;
+    min-width: 500px;
+    min-height: 400px;
     margin: 40px, auto;
     background-color: #fff;
     border-radius: 15px;
@@ -137,10 +137,21 @@ p {
 
 .modal-body{
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.testimony-img-container{
+    height: 100%;
 }
 
 .testimony-desc-full {
     overflow: auto;
+}
+
+.testimony-desc-container {
+    width: 60%;
+    height: 100%;
 }
 
 #read-more-modal {

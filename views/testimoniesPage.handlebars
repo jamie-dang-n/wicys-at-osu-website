@@ -56,22 +56,20 @@
 
     {{!-- Referenced from CS290 Assignment 5 --}}
     <div id="modal-backdrop" class="hidden"></div>
-    <div id="read-more-modal" class="hidden">
+    <div id="read-more-modal" class="contentContainer hidden">
         <div class="modal-dialog">
 
             <div class="modal-header">
-                <h3>someName</h3>
+                <h3 id="modal-title">some title</h3>
                 <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="testimony-desc-container">
-                    <p class="testimony-desc-full">someDesc</p>
+                    <p id="modal-desc" class="testimony-desc-full">someDesc</p>
                 </div>
-                {{#if url}}
                 <div class="testimony-img-container">
                     <img src="someUrl" alt="someAlt">
                 </div>
-                {{/if}}
             </div>
         </div>
     </div>

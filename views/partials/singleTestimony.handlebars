@@ -7,7 +7,7 @@
                 <h2>{{name}}</h2>
                 <p class="testimony-desc">{{desc}}</p>
             </div>
-            <button type="button" class="readMore buttons">Read More</button>
+            <button data-id="{{id}}" data-name="{{name}}" data-desc="{{desc}}" type="button" class="read-more-button buttons">Read More</button>
         </div>
         <div class="testimony-pic">
             <img src="{{url}}" alt="{{alt}}">
@@ -21,7 +21,7 @@
             <h2>{{name}}</h2>
             <p class="testimony-desc">{{desc}}</p>
         </div>
-        <button type="button" class="readMore buttons">Read More</button>
+        <button data-id="{{id}}" data-name="{{name}}" data-desc="{{desc}}" type="button" class="read-more-button buttons">Read More</button>
     </div>
 </div>
 {{/if}}

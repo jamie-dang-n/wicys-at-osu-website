@@ -88,13 +88,32 @@ function handleTestimonyAcceptClick() {
     }
 }
 
-// Handle Opening Modal Menu - add the modal object to the DOM
-// Referenced from CS290 Assignment 5
-window.addEventListener('DOMContentLoaded', function() {
-    var readMoreButtons = document.querySelectorAll(".readMore")
-    console.log(readMoreButtons)
-})
 
+// Referenced from CS290 Assignment 5 & ChatGPT
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle Opening Modal Menu - add the modal object to the DOM
+    // get all read more buttons
+    const readMoreButtons = document.querySelectorAll(".read-more-button")
+    // Add an event listener to each button
+    readMoreButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Get the data associated with the button
+            const name = btn.getAttribute('data-name');
+            const desc = btn.getAttribute('data-desc');
+            
+            // Populate the modal with the data
+            document.getElementById('modal-title').textContent = name;
+            document.getElementById('modal-desc').textContent = desc;
+            
+            // Show the modal
+            showReadMoreModal()
+        })
+    })
+
+    // Handle Closing Modal Menu - remove modal object from the DOM
+    const closeModal = document.getElementById("modal-close")
+    closeModal.addEventListener('click', hideReadMoreModal)
+})
 
 function showReadMoreModal() {
     var readMoreModal = document.getElementById('read-more-modal')
@@ -104,8 +123,8 @@ function showReadMoreModal() {
     modalBackdrop.classList.remove('hidden')
 }
 
-// Handle Closing Modal Menu - remove modal object from the DOM
 function hideReadMoreModal() {
+    console.log("close button clicked")
     var readMoreModal = document.getElementById('read-more-modal')
     var modalBackdrop = document.getElementById('modal-backdrop')
 

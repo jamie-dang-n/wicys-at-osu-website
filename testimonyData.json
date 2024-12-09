@@ -4,41 +4,23 @@
     "desc": "this is jane doe",
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgI7WcLm5kTxlOGWinIECSKgj9SZ0LjCeb4Q&s",
     "alt": "a doe named jane doe",
-    "date": "1/1/2001"
+    "date": "1/1/2001",
+    "id": 1
   },
   {
     "name": "john Doe",
     "desc": "this is john doeasdfasdfahsdfasdhfkladsfjlk;adsfkl;dfkladsflkadsjfkl;adsflkasjflkasdjflkasfj;lsfdjkl",
     "url": "https://cdn.britannica.com/40/109040-050-62EEDEA6/Male-white-tailed-deer.jpg",
     "alt": "a deer named john doe",
-    "date": "1/1/2001"
+    "date": "1/1/2001",
+    "id": 2
   },
   {
     "name": "jesus",
     "desc": "this is jesus",
     "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Spas_vsederzhitel_sinay_%28cropped1%29.jpg/1200px-Spas_vsederzhitel_sinay_%28cropped1%29.jpg",
     "alt": "jesus",
-    "date": "1/1/2001"
-  },
-  {
-    "name": "1",
-    "desc": "sdf",
-    "url": "",
-    "alt": "No image provided.",
-    "date": "12/8/2024"
-  },
-  {
-    "name": "d",
-    "desc": "d",
-    "url": "",
-    "alt": "No image provided.",
-    "date": "12/8/2024"
-  },
-  {
-    "name": "mary",
-    "desc": "this is mary",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Immaculate_Heart_of_Mary.jpg",
-    "alt": "An image of WiCyS Club Activities!",
-    "date": "12/8/2024"
+    "date": "1/1/2001",
+    "id": 3
   }
 ]
