@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-//JS for Testimony Modals
+// JS for Testimony Modals
 // Debugging: Ensure the script is running
 console.log("Script is running");
 
@@ -80,57 +80,71 @@ if (modal && modalBackdrop && modalCloseButton) {
     console.log("Modal Backdrop:", modalBackdrop);
     console.log("Modal Close Button:", modalCloseButton);
 
-    // Function to show the modal
-    function showModal(event) {
-        var button = event.target;
-        console.log("Button clicked:", button);
+    // Fetch testimony data from the server
+    fetch('/testimonyData.json')
+        .then(response => response.json())
+        .then(testimonyData => {
+            console.log("Testimony Data fetched:", testimonyData);
 
-        // Retrieve data attributes from the button
-        var name = button.getAttribute('data-name');
-        var desc = button.getAttribute('data-desc');
-        var url = button.getAttribute('data-url');
-        var alt = button.getAttribute('data-alt');
+            // Function to show the modal
+            function showModal(event) {
+                var button = event.target;
+                console.log("Button clicked:", button);
 
-        // Debugging: Log data attributes
-        console.log("Modal data:", { name, desc, url, alt });
+                // Retrieve the index of the clicked button
+                var index = button.getAttribute('data-index');
+                var testimony = testimonyData[index]; // Use the index to get the correct testimony data
 
-        // Update modal content
-        modal.querySelector('.modal-header h3').textContent = name;
-        modal.querySelector('.testimony-desc-full').textContent = desc;
-        var img = modal.querySelector('.testimony-img-container img');
-        img.src = url;
-        img.alt = alt;
+                // Debugging: Log data for modal
+                console.log("Modal data:", testimony);
 
-        // Show the modal
-        modal.classList.remove('hidden');
-        modalBackdrop.classList.remove('hidden');
-        console.log("Modal displayed.");
-    }
+                // Update modal content
+                modal.querySelector('.modal-header h3').textContent = testimony.name;
+                modal.querySelector('.testimony-desc-full').textContent = testimony.desc;
+                var img = modal.querySelector('.testimony-img-container img');
+                img.src = testimony.url;
+                img.alt = testimony.alt;
 
-    // Function to hide the modal
-    function hideModal() {
-        modal.classList.add('hidden');
-        modalBackdrop.classList.add('hidden');
-        console.log("Modal hidden.");
-    }
+                // Show the modal
+                modal.classList.remove('hidden');
+                modalBackdrop.classList.remove('hidden');
+                console.log("Modal displayed.");
+            }
 
-    // Attach event listeners to "Read More" buttons if they exist
-    var readMoreButtons = document.querySelectorAll('.readMore');
-    console.log("Found Read More Buttons:", readMoreButtons);
+            // Function to hide the modal
+            function hideModal() {
+                modal.classList.add('hidden');
+                modalBackdrop.classList.add('hidden');
+                console.log("Modal hidden.");
+            }
 
-    // Safeguard: Check if readMoreButtons exist and attach listeners
-    if (readMoreButtons.length === 0) {
-        console.warn("No Read More buttons found. Check your HTML structure and class names.");
-    } else {
-        readMoreButtons.forEach(function (button) {
-            button.addEventListener('click', showModal);
-            console.log("Event listener attached to button:", button);
+            // Attach event listeners to "Read More" buttons if they exist
+            var readMoreButtons = document.querySelectorAll('.readMore');
+            console.log("Found Read More Buttons:", readMoreButtons);
+
+            // Safeguard: Check if readMoreButtons exist and attach listeners
+            if (readMoreButtons.length === 0) {
+                console.warn("No Read More buttons found. Check your HTML structure and class names.");
+            } else {
+                readMoreButtons.forEach(function (button, index) {
+                    // Store the index on the button element to pass to the modal function
+                    button.setAttribute('data-index', index);
+                    button.addEventListener('click', showModal);
+                    console.log("Event listener attached to button:", button);
+                });
+            }
+
+            // Attach event listener to close button
+            modalCloseButton.addEventListener('click', hideModal);
+            console.log("Event listener attached to modal close button.");
+
+            // Ensure clicking on the backdrop also closes the modal
+            modalBackdrop.addEventListener('click', hideModal);
+        })
+        .catch(error => {
+            console.error("Error fetching testimony data:", error);
         });
-    }
 
-    // Attach event listener to close button
-    modalCloseButton.addEventListener('click', hideModal);
-    console.log("Event listener attached to modal close button.");
 } else {
     console.error("Modal or related elements not found. Please ensure they exist in the HTML structure.");
 }

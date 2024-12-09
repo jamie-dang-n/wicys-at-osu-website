@@ -40,5 +40,19 @@
     "url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Immaculate_Heart_of_Mary.jpg",
     "alt": "An image of WiCyS Club Activities!",
     "date": "12/8/2024"
+  },
+  {
+    "name": "lalala",
+    "desc": "allalalala",
+    "url": "cat.jpg",
+    "alt": "An image of WiCyS Club Activities!",
+    "date": "12/8/2024"
+  },
+  {
+    "name": "test",
+    "desc": "test",
+    "url": "test.jpg",
+    "alt": "An image of WiCyS Club Activities!",
+    "date": "12/8/2024"
   }
 ]
