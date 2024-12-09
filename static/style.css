@@ -44,8 +44,8 @@ p {
 
 /* Home Page */
 .homePageContent {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
 /* Testimonial - all page content */
@@ -143,21 +143,10 @@ p {
 /* Modal Body */
 .modal-body {
     padding: 20px;
-    display: flex;
-    flex-direction: row;
-}
-
-.testimony-img-container{
-    height: 100%;
 }
 
 .testimony-desc-full {
     overflow: auto;
-}
-
-.testimony-desc-container {
-    width: 60%;
-    height: 100%;
 }
 
 #read-more-modal {
@@ -393,7 +382,8 @@ ul {
 }
 
 li {
-    float: right;
+    float: none;
+    margin: 0; /* Remove margin between list items */
 }
 
 li a {
@@ -405,8 +395,8 @@ li a {
 }
 
 li a:hover {
-background-color: #6A6A6A;
-height: 100%;
+    background-color: #6A6A6A;
+    height: 100%;
 }
 
 /* Ensure menu items are close together and on the right */
