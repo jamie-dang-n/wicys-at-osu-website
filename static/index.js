@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
     // JS for Testimony Form
     const testimonySubmit = document.getElementById("testimonySubmit");
 
@@ -64,6 +65,244 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+
+//JS for Testimony filtering:
+var allTestimonies = []
+var testimonyElems = document.getElementsByClassName('testimonial-post')
+
+for (var i = 0; i < testimonyElems.length; i++) {
+    console.log("Inspecting testimony element: ", testimonyElems[i]);  // Check the DOM element
+    allTestimonies.push(parseTestimonyElem(testimonyElems[i]));
+}
+
+//Check if the filter button exists
+var filterUpdateButton = document.getElementById('filter-update-button');
+
+if (filterUpdateButton) {
+    console.log("filter button: ", filterUpdateButton)
+
+    filterUpdateButton.addEventListener('click', function() {
+        console.log('Filter button clicked');
+        doFilterUpdate(); 
+    });
+}
+
+
+
+function insertNewTestimony(message, name, photoURL, date, alt){
+    console.log("adding new testimony")
+
+
+    console.log("adding message: " + message)
+    console.log("adding name: " + name)
+    console.log("adding url: " + photoURL)
+    console.log("adding date: " + date)
+    console.log("adding alt: " + alt)
+
+    var testimonyContainer = document.getElementById("testimonies-flex");
+    var data = {
+        desc: message,
+        name: name,
+        url: photoURL,
+        date: date,
+        alt: alt
+    };
+    
+
+    var html = Handlebars.templates["singleTestimony"](data);
+
+    testimonyContainer.insertAdjacentHTML("beforeEnd", html)
+}
+
+function clearFiltersAndReinsertTestimonies() {
+    document.getElementById('filter-text').value = ""
+    document.getElementById('filter-start').value = ""
+    document.getElementById('filter-end').value = ""
+    document.getElementById('filter-image').value = "Yes"
+
+    doFilterUpdate()
+}
+
+
+
+/*
+ * A function to apply the current filters to a specific testimony.  Returns true
+ * if the testimony passes the filters and should be displayed and false otherwise.
+ */
+function testimonyPassesFilters(testimony, filters) {
+    if (filters.text) {
+        var testimonyMessage = testimony.desc.toLowerCase();
+        var testimonyName = testimony.name.toLowerCase();
+        var filterText = filters.text.toLowerCase();
+        if (testimonyMessage.indexOf(filterText) === -1 && testimonyName.indexOf(filterText) === -1) {
+            console.log("filter text doesn't appear")
+            return false;
+        }else{
+            console.log("filter text appears")
+        }
+    }
+
+
+    if (filters.startDate) {
+        // Ensure the testimony date is a valid Date object
+        var testimonyDate = new Date(testimony.date);
+        var filterDate = new Date(filters.startDate);
+        console.log("date: " + testimonyDate)
+        console.log("filters date: " + filterDate)
+        if (isNaN(testimonyDate.getTime())) {
+            console.log("filter date not in range")
+            return false; // If testimony date is invalid, skip it
+        }
+
+        // Compare the testimony date with the filter start date
+        if (testimonyDate > filterDate) {
+            console.log("filter date not in range start")
+            return false; // Testimony date is earlier than the filter start date
+        }else{
+            console.log("filter date in range start")
+        }
+    }
+
+    // Check if the end date filter is applied
+    if (filters.endDate) {
+        // Ensure the testimony date is a valid Date object
+        var testimonyDate = new Date(testimony.date);
+        var filterDate = new Date(filters.startDate);
+        if (isNaN(testimonyDate.getTime())) {
+            return false; // If testimony date is invalid, skip it
+        }else{
+            console.log("filter date not in range")
+        }
+
+        // Compare the testimony date with the filter end date
+        if (testimonyDate < filterDate) {
+            console.log("filter date not in range end")
+            return false; // Testimony date is later than the filter end date
+        }else{
+            console.log("filter date in range end")
+        }
+    }
+
+    if (filters.includeImage === "Yes") { //filtering includes testimonies with images
+        console.log("yes images")
+        if (!testimony.url) {
+            return false;
+        }
+    }else{ //filtering includes testimonies without images
+        console.log("no images")
+        if(testimony.url){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+/*
+ * Applies the filters currently entered by the user to the set of all posts.
+ * Any post that satisfies the user's filter values will be displayed,
+ * including posts that are not currently being displayed because they didn't
+ * satisfy an old set of filters.  Posts that don't satisfy the filters are
+ * removed from the DOM.
+ */
+function doFilterUpdate() {
+    /*
+     * Grab values of filters from user inputs.
+     */
+
+    alert("filtering")
+    var filters = {
+        text: document.getElementById('filter-text').value.trim(),
+        startDate: new Date(document.getElementById('filter-start').value), // Convert to Date object
+        endDate: new Date(document.getElementById('filter-end').value), // Convert to Date object
+        includeImage: document.getElementById('filter-image').value // Either "Yes" or "No"
+    }
+    
+
+    /*
+     * Remove all "testimony" elements from the DOM.
+     */
+    var testimonyContainer = document.getElementById('testimonies-flex')
+    while(testimonyContainer.lastChild) {
+        testimonyContainer.removeChild(testimonyContainer.lastChild)
+    }
+
+    /*
+     * Loop through the collection of all "testimony" elements and re-insert ones
+     * that meet the current filtering criteria.
+     */
+    allTestimonies.forEach(function (testimony) {
+        if (testimonyPassesFilters(testimony, filters)) {
+            insertNewTestimony(
+                testimony.desc,
+                testimony.name,
+                testimony.url,
+                testimony.date,
+                testimony.alt
+            )
+        }
+    })
+}
+
+
+/*
+ * This function parses an existing DOM element representing a single post
+ * into an object representing that post and returns that object.  The object
+ * is structured like this:
+ *
+ * {
+ *   name: "...",
+ *   desc: "...",
+ *   url: ...,
+ *   alt: "...",
+ *   date: "..."
+ * }
+ */
+function parseTestimonyElem(testimonyData) {
+    var testimony = {};
+
+    // Get the image element for the URL and alt text
+    var testimonyImageElem = testimonyData.querySelector('.testimony-pic img');
+    if (testimonyImageElem) {
+        testimony.url = testimonyImageElem.src; // Get the image source
+        testimony.alt = testimonyImageElem.alt; // Get the alt text
+    } else {
+        testimony.url = null;  // If no image, set to null
+        testimony.alt = "No image provided"; // Default alt text
+    }
+
+    // Get the name from the h2 element
+    var nameElem = testimonyData.querySelector('.testimony-text h2');
+    if (nameElem) {
+        testimony.name = nameElem.innerText.trim(); // Get the name text and trim any extra spaces
+    } else {
+        testimony.name = ''; // If no name found, set to empty string
+    }
+
+    // Get the description from the p element with the class "testimony-desc"
+    var descElem = testimonyData.querySelector('.testimony-desc');
+    if (descElem) {
+        testimony.desc = descElem.innerText.trim(); // Get the description text and trim any extra spaces
+    } else {
+        testimony.desc = ''; // If no description found, set to empty string
+    }
+
+    // Get the date from a custom data attribute (if you have one, like data-date)
+    var dateElem = testimonyData.querySelector('[data-date]');
+    if (dateElem) {
+        testimony.date = new Date(dateElem.getAttribute('data-date')); // Convert date string to Date object
+    } else {
+        testimony.date = new Date(); // If no date found, set to current date
+    }
+
+    return testimony;
+}
+
+
+
+
 
 // JS for Testimony Modals
 // Debugging: Ensure the script is running
@@ -197,4 +436,9 @@ if (menuIcon && navbarMenu) {
 } else {
     console.error("Navbar menu or menu icon not found. Ensure the correct class names are applied.");
 }
+
+
+
+
+
 
