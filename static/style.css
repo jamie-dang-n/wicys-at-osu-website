@@ -142,6 +142,8 @@ p {
 
 /* Modal Body */
 .modal-body {
+    display: flex;
+    flex-direction: row;
     padding: 20px;
 }
 
@@ -149,36 +151,30 @@ p {
     overflow: auto;
 }
 
+.testimony-desc-container{
+    max-width: 50%;
+    margin-right: 10px;
+}
+
 #read-more-modal {
     position: fixed; /* Make the modal fixed relative to the viewport */
-    top: 50%; /* Position it in the middle vertically */
-    left: 50%; /* Position it in the middle horizontally */
-    transform: translate(-50%, -50%); /* Offset by 50% of the element's height and width to truly center it */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    width: auto; /* Adjust size based on content */
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    max-width: 80%; /* Limit max width */
-    z-index: 1050; /* Ensure it's above other content */
+    top: 0; /* Position it in the middle vertically */
+    left: 0; /* Position it in the middle horizontally */
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    z-index: 1010; /* Ensure it's above other content */
 }
 
 /* Modal Backdrop - Make sure it's covering the entire viewport */
 #modal-backdrop {
     position: fixed;
     top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
-    z-index: 1040; /* Behind the modal */
-    display: none; /* Hidden by default */
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 /* Testimonial Page Title */
@@ -256,8 +252,8 @@ p {
 
 .testimony-pic img {
     width: 100%;
-    height: auto; /* Keep the aspect ratio intact */
-    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
 }
 
