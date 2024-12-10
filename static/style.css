@@ -111,7 +111,7 @@ p {
     width: auto;
     max-width: 600px;
     min-width: 350px;
-    min-height: 300px;
+    min-height: auto;
     margin: 40px auto;
     background-color: #fff;
     border-radius: 15px;
@@ -153,7 +153,7 @@ p {
 
 .testimony-desc-container{
     max-width: 50%;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 #read-more-modal {
@@ -162,8 +162,22 @@ p {
     left: 0; /* Position it in the middle horizontally */
     right: 0;
     bottom: 0;
-    overflow: scroll;
     z-index: 1010; /* Ensure it's above other content */
+}
+
+/* Adjustments to Center Image Inside Modal */
+#read-more-modal .testimony-img-container {
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    width: 100%;
+    margin-bottom: 20px; /* Space between the image and the text */
+}
+
+.testimony-img-container img {
+    max-width: 100%; /* Ensure image takes up available width */
+    max-height: 70vh; /* Ensure the image height does not overflow the viewport */
+    object-fit: cover;
 }
 
 /* Modal Backdrop - Make sure it's covering the entire viewport */
@@ -255,21 +269,6 @@ p {
     height: 100%;
     object-fit: cover;
     border-radius: 5px;
-}
-
-/* Adjustments to Center Image Inside Modal */
-#read-more-modal .testimony-img-container {
-    display: flex;
-    justify-content: center; /* Center the image horizontally */
-    align-items: center; /* Center the image vertically */
-    width: 100%;
-    margin-bottom: 20px; /* Space between the image and the text */
-}
-
-.testimony-img-container img {
-    max-width: 100%; /* Ensure image takes up available width */
-    max-height: 70vh; /* Ensure the image height does not overflow the viewport */
-    object-fit: contain; /* Keep the image proportional */
 }
 
 /* Slideshow container */

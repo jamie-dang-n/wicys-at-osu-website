@@ -28,7 +28,8 @@
                 <label for="filter-include-image" class="filter-input-label">Include Image</label>
                 <div class="filter-input-element">
                     <select id="filter-image" class="filter-input" name="filter-image">
-                        <option selected value="Yes">Yes</option>
+                        <option selected value="Both">Both</option>
+                        <option  value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                 </div>
@@ -58,15 +59,15 @@
     <div id="read-more-modal" class="contentContainer hidden">
         <div class="modal-dialog">
             <div class="modal-header">
-                <h3 id="modal-title">some title</h3>
+                <h3 id="modal-title">someTitle</h3>
                 <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="testimony-desc-container">
                     <p id="modal-desc" class="testimony-desc-full">someDesc</p>
                 </div>
-                <div class="testimony-img-container">
-                    <img src="someUrl" alt="someAlt">
+                <div class="testimony-img-container" id="modal-img-container">
+                    <img src="someUrl" alt="someAlt" id="modal-img">
                 </div>
             </div>
         </div>

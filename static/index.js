@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(res => res.json())
             .then(data => {
                 if (data.message === "Testimony saved successfully!") {
+                    alert("Testimony saved successfully!")
                     const testimonyTemplate = Handlebars.templates.singleTestimony;
                     const newTestimonyHTML = testimonyTemplate({ url: testimonyUrl, desc, name, alt });
                     const testimoniesSection = document.getElementById("testimonies-flex");
@@ -59,13 +60,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
             .catch(err => {
-                alert("An error occurred saving the testimony.");
+                console.log("An error occurred saving the testimony.");
                 console.error("Client-side error:", err);
             });
         }
     }
 });
-
 
 //JS for Testimony filtering:
 var allTestimonies = []
@@ -87,8 +87,6 @@ if (filterUpdateButton) {
         doFilterUpdate(); 
     });
 }
-
-
 
 function insertNewTestimony(message, name, photoURL, date, alt){
     console.log("adding new testimony")
@@ -123,8 +121,6 @@ function clearFiltersAndReinsertTestimonies() {
 
     doFilterUpdate()
 }
-
-
 
 /*
  * A function to apply the current filters to a specific testimony.  Returns true
@@ -184,21 +180,24 @@ function testimonyPassesFilters(testimony, filters) {
         }
     }
 
-    if (filters.includeImage === "Yes") { //filtering includes testimonies with images
-        console.log("yes images")
-        if (!testimony.url) {
-            return false;
-        }
-    }else{ //filtering includes testimonies without images
-        console.log("no images")
-        if(testimony.url){
-            return false;
+    // Do no image filtering if user wants both 
+    if (!(filters.includeImage === "Both")) {
+        if (filters.includeImage === "Yes") { //filtering includes testimonies with images
+            console.log("yes images")
+            if (!testimony.url) {
+                return false;
+            }
+        }else{ //filtering includes testimonies without images
+            console.log("no images")
+            if(testimony.url){
+                return false;
+            }
         }
     }
+    
 
     return true;
 }
-
 
 /*
  * Applies the filters currently entered by the user to the set of all posts.
@@ -220,30 +219,27 @@ function doFilterUpdate() {
         includeImage: document.getElementById('filter-image').value // Either "Yes" or "No"
     }
     
-
-    /*
-     * Remove all "testimony" elements from the DOM.
-     */
     var testimonyContainer = document.getElementById('testimonies-flex')
-    while(testimonyContainer.lastChild) {
-        testimonyContainer.removeChild(testimonyContainer.lastChild)
+    var testimonyChildren = testimonyContainer.children
+
+    // Reset testimony elements back to normal by making them visible again
+    for (var j = 0; j < testimonyChildren.length;j++) {
+        if (testimonyChildren[j].classList.contains('hidden')) {
+            testimonyChildren[j].classList.remove('hidden')
+        }
     }
 
     /*
-     * Loop through the collection of all "testimony" elements and re-insert ones
-     * that meet the current filtering criteria.
-     */
+     * "Remove" all "testimony" elements by hiding them.
+     */ 
+    var i = 0
     allTestimonies.forEach(function (testimony) {
-        if (testimonyPassesFilters(testimony, filters)) {
-            insertNewTestimony(
-                testimony.desc,
-                testimony.name,
-                testimony.url,
-                testimony.date,
-                testimony.alt
-            )
+        if (!(testimonyPassesFilters(testimony, filters))) {
+            testimonyChildren[i].classList.add('hidden')
         }
+        i++
     })
+    
 }
 
 
@@ -301,9 +297,6 @@ function parseTestimonyElem(testimonyData) {
 }
 
 
-
-
-
 // JS for Testimony Modals
 // Debugging: Ensure the script is running
 console.log("Script is running");
@@ -343,7 +336,7 @@ if (modal && modalBackdrop && modalCloseButton) {
                 var img = modal.querySelector('.testimony-img-container img');
                 img.src = testimony.url;
                 img.alt = testimony.alt;
-
+    
                 // Show the modal
                 modal.classList.remove('hidden');
                 modalBackdrop.classList.remove('hidden');
@@ -356,6 +349,7 @@ if (modal && modalBackdrop && modalCloseButton) {
                 modalBackdrop.classList.add('hidden');
                 console.log("Modal hidden.");
             }
+        
 
             // Attach event listeners to "Read More" buttons if they exist
             var readMoreButtons = document.querySelectorAll('.readMore');
@@ -383,10 +377,11 @@ if (modal && modalBackdrop && modalCloseButton) {
         .catch(error => {
             console.error("Error fetching testimony data:", error);
         });
-
 } else {
     console.error("Modal or related elements not found. Please ensure they exist in the HTML structure.");
 }
+
+
 
 // Safeguard for Contact Form Elements
 var nameVal = document.getElementById("contactName");
