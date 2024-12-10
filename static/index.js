@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //JS for Testimony filtering:
+//JS outline from assignment 5 --> source citation
 var allTestimonies = []
 var testimonyElems = document.getElementsByClassName('testimonial-post')
 
@@ -212,10 +213,10 @@ function testimonyPassesFilters(testimony, filters) {
 }
 
 /*
- * Applies the filters currently entered by the user to the set of all posts.
- * Any post that satisfies the user's filter values will be displayed,
- * including posts that are not currently being displayed because they didn't
- * satisfy an old set of filters.  Posts that don't satisfy the filters are
+ * Applies the filters currently entered by the user to the set of all testimonies.
+ * Any testimony that satisfies the user's filter values will be displayed,
+ * including testimonies that are not currently being displayed because they didn't
+ * satisfy an old set of filters.  Testimonies that don't satisfy the filters are
  * removed from the DOM.
  */
 function doFilterUpdate() {
@@ -223,7 +224,6 @@ function doFilterUpdate() {
      * Grab values of filters from user inputs.
      */
 
-    alert("filtering")
     var filters = {
         text: document.getElementById('filter-text').value.trim(),
         startDate: new Date(document.getElementById('filter-start').value), // Convert to Date object
@@ -256,8 +256,8 @@ function doFilterUpdate() {
 
 
 /*
- * This function parses an existing DOM element representing a single post
- * into an object representing that post and returns that object.  The object
+ * This function parses an existing DOM element representing a single testimony
+ * into an object representing that testimony and returns that object.  The object
  * is structured like this:
  *
  * {
