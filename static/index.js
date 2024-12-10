@@ -135,9 +135,6 @@ function testimonyPassesFilters(testimony, filters) {
         var testimonyMessage = testimony.desc.toLowerCase();
         var testimonyName = testimony.name.toLowerCase();
         var filterText = filters.text.toLowerCase();
-        console.log("testimony message: " + testimonyMessage)
-        console.log("testimony name: " + testimonyName)
-        console.log("filter text: " + filterText)
         if (testimonyMessage.indexOf(filterText) === -1 && testimonyName.indexOf(filterText) === -1) {
             console.log("filter text doesn't appear")
             return false;
@@ -150,13 +147,20 @@ function testimonyPassesFilters(testimony, filters) {
     if (filters.startDate) {
         // Ensure the testimony date is a valid Date object
         var testimonyDate = new Date(testimony.date);
+        var filterDate = new Date(filters.startDate);
+        console.log("date: " + testimonyDate)
+        console.log("filters date: " + filterDate)
         if (isNaN(testimonyDate.getTime())) {
+            console.log("filter date not in range")
             return false; // If testimony date is invalid, skip it
         }
 
         // Compare the testimony date with the filter start date
-        if (testimonyDate < filters.startDate) {
+        if (testimonyDate > filterDate) {
+            console.log("filter date not in range start")
             return false; // Testimony date is earlier than the filter start date
+        }else{
+            console.log("filter date in range start")
         }
     }
 
@@ -164,18 +168,30 @@ function testimonyPassesFilters(testimony, filters) {
     if (filters.endDate) {
         // Ensure the testimony date is a valid Date object
         var testimonyDate = new Date(testimony.date);
+        var filterDate = new Date(filters.startDate);
         if (isNaN(testimonyDate.getTime())) {
             return false; // If testimony date is invalid, skip it
+        }else{
+            console.log("filter date not in range")
         }
 
         // Compare the testimony date with the filter end date
-        if (testimonyDate > filters.endDate) {
+        if (testimonyDate < filterDate) {
+            console.log("filter date not in range end")
             return false; // Testimony date is later than the filter end date
+        }else{
+            console.log("filter date in range end")
         }
     }
 
     if (filters.includeImage === "Yes") { //filtering includes testimonies with images
+        console.log("yes images")
         if (!testimony.url) {
+            return false;
+        }
+    }else{ //filtering includes testimonies without images
+        console.log("no images")
+        if(testimony.url){
             return false;
         }
     }
