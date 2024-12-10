@@ -22,6 +22,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    //JS for Testimony filtering:
+    var testimonyElems = document.getElementsByClassName('testimonial-post')
+    for (var i = 0; i < testimonyElems.length; i++) {
+        allTestimonies.push(parseTestimonyElem(testimonyElems[i]))
+    }
+
+
+    var filterUpdateButton = document.getElementById('filter-update-button');
+
+    if (filterUpdateButton) {
+        console.log('Filter update button found');
+        alert("found")
+        filterUpdateButton.addEventListener('click', function() {
+            console.log('Filter button clicked');
+            doFilterUpdate();  // This triggers the filter update function
+        });
+    } else {
+        console.log('Filter update button not found');
+        alert("not found")
+    }    
+
     // JS for Testimony Form
     const testimonySubmit = document.getElementById("testimonySubmit");
 
@@ -197,4 +218,169 @@ if (menuIcon && navbarMenu) {
 } else {
     console.error("Navbar menu or menu icon not found. Ensure the correct class names are applied.");
 }
+
+//JS for testimony filtering:
+
+function insertNewTestimony(message, name, photoURL, date, alt){
+    var testimonyContainer = document.getElementById("testimonies-flex")
+    var data = {
+        testimony:{
+            desc: message,
+            name: name,
+            url: photoURL,
+            date: date,
+            alt: alt
+        }
+    };
+
+    var html = Handlebars.templates["singleTestimony"](data);
+
+    testimonyContainer.insertAdjacentHTML("beforeEnd", html)
+}
+
+function clearFiltersAndReinsertTestimonies() {
+    document.getElementById('filter-text').value = ""
+    document.getElementById('filter-start').value = ""
+    document.getElementById('filter-end').value = ""
+    document.getElementById('filter-image').value = "Yes"
+
+    doFilterUpdate()
+}
+
+
+
+/*
+ * A function to apply the current filters to a specific testimony.  Returns true
+ * if the testimony passes the filters and should be displayed and false otherwise.
+ */
+function testimonyPassesFilters(testimony, filters) {
+    if (filters.text) {
+        var testimonyMessage = testimony.message.toLowerCase();
+        var filterText = filters.text.toLowerCase();
+        if (testimonyMessage.indexOf(filterText) === -1) {
+            return false;
+        }
+    }
+
+    if (filters.text) {
+        var testimonyName = testimony.name.toLowerCase();
+        var filterText = filters.text.toLowerCase();
+        if (testimonyName.indexOf(filterText) === -1) {
+            return false;
+        }
+    }
+
+    if (filters.startDate) {
+        // Ensure the testimony date is a valid Date object
+        var testimonyDate = new Date(testimony.date);
+        if (isNaN(testimonyDate.getTime())) {
+            return false; // If testimony date is invalid, skip it
+        }
+
+        // Compare the testimony date with the filter start date
+        if (testimonyDate < filters.startDate) {
+            return false; // Testimony date is earlier than the filter start date
+        }
+    }
+
+    // Check if the end date filter is applied
+    if (filters.endDate) {
+        // Ensure the testimony date is a valid Date object
+        var testimonyDate = new Date(testimony.date);
+        if (isNaN(testimonyDate.getTime())) {
+            return false; // If testimony date is invalid, skip it
+        }
+
+        // Compare the testimony date with the filter end date
+        if (testimonyDate > filters.endDate) {
+            return false; // Testimony date is later than the filter end date
+        }
+    }
+
+    if (filters.includeImage === "Yes") { //filtering includes testimonies with images
+        if (!testimony.photoURL) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+/*
+ * Applies the filters currently entered by the user to the set of all posts.
+ * Any post that satisfies the user's filter values will be displayed,
+ * including posts that are not currently being displayed because they didn't
+ * satisfy an old set of filters.  Posts that don't satisfy the filters are
+ * removed from the DOM.
+ */
+function doFilterUpdate() {
+    /*
+     * Grab values of filters from user inputs.
+     */
+
+    alert("filtering")
+    var filters = {
+        text: document.getElementById('filter-text').value.trim(),
+        startDate: new Date(document.getElementById('filter-start').value), // Convert to Date object
+        endDate: new Date(document.getElementById('filter-end').value), // Convert to Date object
+        includeImage: document.getElementById('filter-image').value // Either "Yes" or "No"
+    }
+    
+
+    /*
+     * Remove all "testimony" elements from the DOM.
+     */
+    var testimonyContainer = document.getElementById('testimonies-flex')
+    while(testimonyContainer.lastChild) {
+        testimonyContainer.removeChild(testimonyContainer.lastChild)
+    }
+
+    /*
+     * Loop through the collection of all "testimony" elements and re-insert ones
+     * that meet the current filtering criteria.
+     */
+    allTestimonies.forEach(function (testimony) {
+        if (testimonyPassesFilters(testimony, filters)) {
+            insertNewTestimony(
+                testimony.message,
+                testimony.photoURL,
+                testimony.name,
+                testimony.date,
+                testimony.alt
+            )
+        }
+    })
+}
+
+
+/*
+ * This function parses an existing DOM element representing a single post
+ * into an object representing that post and returns that object.  The object
+ * is structured like this:
+ *
+ * {
+ *   description: "...",
+ *   photoURL: "...",
+ *   price: ...,
+ *   city: "...",
+ *   condition: "..."
+ * }
+ */
+function parseTestimonyElem(testimonyData) {
+    var testimony = {};
+
+    // Directly extract data from the JSON
+    testimony.photoURL = testimonyData.url || null;  // If no URL, set to null
+    testimony.message = testimonyData.desc || '';    // Use description
+    testimony.name = testimonyData.name || '';       // Use name
+    testimony.date = new Date(testimonyData.date);   // Convert date string to Date object
+    testimony.alt = testimonyData.alt || "No image provided"; // Alt text for image
+
+    return testimony;
+}
+
+
+
+
 
