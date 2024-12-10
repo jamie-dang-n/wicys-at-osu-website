@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleTestimonyAcceptClick() {
-        const today = new Date().toLocaleDateString();
+        const today = new Date();
         const name = document.getElementById('testimonyName').value.trim();
         const desc = document.getElementById('testimonyInput').value.trim();
         const testimonyUrl = document.getElementById('testimonyImage').value;
@@ -117,7 +117,7 @@ function clearFiltersAndReinsertTestimonies() {
     document.getElementById('filter-text').value = ""
     document.getElementById('filter-start').value = ""
     document.getElementById('filter-end').value = ""
-    document.getElementById('filter-image').value = "Yes"
+    document.getElementById('filter-image').value = "Both"
 
     doFilterUpdate()
 }
@@ -127,20 +127,23 @@ function clearFiltersAndReinsertTestimonies() {
  * if the testimony passes the filters and should be displayed and false otherwise.
  */
 function testimonyPassesFilters(testimony, filters) {
+    
+    var passesText = true;
     if (filters.text) {
         var testimonyMessage = testimony.desc.toLowerCase();
         var testimonyName = testimony.name.toLowerCase();
         var filterText = filters.text.toLowerCase();
         if (testimonyMessage.indexOf(filterText) === -1 && testimonyName.indexOf(filterText) === -1) {
             console.log("filter text doesn't appear")
-            return false;
+            passesText = false;
         }else{
             console.log("filter text appears")
         }
     }
 
 
-    if (filters.startDate) {
+    var passesStart = true;
+    if (!isNaN(filters.startDate.getTime())) {
         // Ensure the testimony date is a valid Date object
         var testimonyDate = new Date(testimony.date);
         var filterDate = new Date(filters.startDate);
@@ -148,55 +151,64 @@ function testimonyPassesFilters(testimony, filters) {
         console.log("filters date: " + filterDate)
         if (isNaN(testimonyDate.getTime())) {
             console.log("filter date not in range")
-            return false; // If testimony date is invalid, skip it
+            passesStart = false; // If testimony date is invalid, skip it
+        } else {
+            console.log("testimony date: ", testimonyDate)
+            // Compare the testimony date with the filter start date
+            if (testimonyDate.getTime() < filterDate.getTime()) {
+                console.log("filter date not in range start")
+                passesStart = false; // Testimony date is earlier than the filter start date
+            }else{
+                console.log("filter date in range start")
+            }
         }
-
-        // Compare the testimony date with the filter start date
-        if (testimonyDate > filterDate) {
-            console.log("filter date not in range start")
-            return false; // Testimony date is earlier than the filter start date
-        }else{
-            console.log("filter date in range start")
-        }
+        
     }
 
-    // Check if the end date filter is applied
-    if (filters.endDate) {
+    var passesEnd = true;
+    if (!isNaN(filters.endDate.getTime())) {
         // Ensure the testimony date is a valid Date object
         var testimonyDate = new Date(testimony.date);
-        var filterDate = new Date(filters.startDate);
+        var filterDate = new Date(filters.endDate);
+        // Set filterDate to end of day for the endDate comparison
+        filterDate.setUTCHours(23,59,59,999);
+        console.log("date: " + testimonyDate)
+        console.log("filters date: " + filterDate)
         if (isNaN(testimonyDate.getTime())) {
-            return false; // If testimony date is invalid, skip it
-        }else{
             console.log("filter date not in range")
+            passesEnd = false; // If testimony date is invalid, skip it
+        }else{
+            console.log("testimony date: ", testimonyDate)
+            // Compare the testimony date with the filter end date
+            if (testimonyDate.getTime() > filterDate.getTime()) {
+                console.log("filter date not in range end")
+                passesEnd = false; // Testimony date is later than the filter end date
+            }else{
+                console.log("filter date in range end")
+            }
         }
 
-        // Compare the testimony date with the filter end date
-        if (testimonyDate < filterDate) {
-            console.log("filter date not in range end")
-            return false; // Testimony date is later than the filter end date
-        }else{
-            console.log("filter date in range end")
-        }
+        
     }
 
     // Do no image filtering if user wants both 
+    var passesImage = true;
     if (!(filters.includeImage === "Both")) {
         if (filters.includeImage === "Yes") { //filtering includes testimonies with images
             console.log("yes images")
             if (!testimony.url) {
-                return false;
+                passesImage = false;
             }
         }else{ //filtering includes testimonies without images
             console.log("no images")
             if(testimony.url){
-                return false;
+                passesImage = false;
             }
         }
     }
     
 
-    return true;
+    return passesImage && passesText && passesEnd && passesStart;
 }
 
 /*
@@ -285,7 +297,7 @@ function parseTestimonyElem(testimonyData) {
         testimony.desc = ''; // If no description found, set to empty string
     }
 
-    // Get the date from a custom data attribute (if you have one, like data-date)
+    // Get the date from a custom data attribute, data-date
     var dateElem = testimonyData.querySelector('[data-date]');
     if (dateElem) {
         testimony.date = new Date(dateElem.getAttribute('data-date')); // Convert date string to Date object
