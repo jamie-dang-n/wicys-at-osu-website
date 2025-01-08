@@ -48,6 +48,12 @@ p {
     margin-right: 200px;
 }
 
+/* banner image */
+#banner {
+    margin: 5px;
+    padding-top: 10px;
+}
+
 /* Testimonial - all page content */
 .testimonies-all-content {
     display:flex;
