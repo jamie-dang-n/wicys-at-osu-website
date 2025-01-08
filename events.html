@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <header>
+        <div class="navbar">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul>
+                <li id="navImg"><img src="wicys_shield_beaver_logo.png"></li>
+                <div class="navbar-items">
+                    <li><a href="/wicys-at-osu.github.io/">Home</a></li>
+                    <li><a href="/wicys-at-osu.github.io/contact.html">Contact Us</a></li>
+                    <li><a href="/wicys-at-osu.github.io/events.html">Events</a></li>
+                </div>
+            </ul>
+        </div>
+    </header>
+
+
+    <body id = "events-page">
+        <div class="contentContainer">
+            <h1>Events</h1>
+            <!-- Got help from https://stackoverflow.com/questions/32540044/display-current-date-in-dd-mm-yyyy-format -->
+            <h2> Current Date: <script> document.write(new Date().toLocaleDateString()); </script>
+            </h2>
+            <iframe src="https://calendar.google.com/calendar/embed?src=65ab4dfe9533f7a0457013d802bdfc01bfcd2937fb1bc360b83587939a05ab1e%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" align="center" scrolling="no"></iframe>
+        </div>
+    </body>
+
+    <footer>
+        <a href="https://discord.gg/PUv3Cz9PzK"><img src = "discord.png" width="50" height = "50"></a>
+        <a href="https://www.instagram.com/wicys_oregonstate/"><img src = "instagram.png" width="50" height = "50"></a>
+        <a href="contact.html"><img src = "email.png" width="50" height = "50"></a></a>
+    </footer>
+</html>
