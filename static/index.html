@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiCyS @ OSU</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.js" charset="utf-8" defer></script> -->
+    <!-- <script src="/singleTestimonyTemplate.js" charset="utf-8" defer></script> -->
+    <!-- <script src="/index.js" charset="utf-8" defer></script> -->
+</head>
+
+<header>
+    <div class="navbar">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <ul>
+            <li id="navImg"><img src="wicys_shield_beaver_logo.png"></li>
+            <div class="navbar-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/testimonials">Testimonials</a></li>
+            </div>
+        </ul>
+    </div>
+</header>
+
+
+
+    <body>
+        <main>
+            
+<div class="homePageContent contentContainer">
+    <!-- <section class="slideshow-container">
+        {{#each slides}}
+            {{> slideshow}}
+        {{/each}}
+        <div class="slideshow-navigation">
+            <button class="prev-slide">&#8592;</button>
+            <button class="next-slide">&#8594;</button>
+        </div>
+    </section> -->
+
+    <h1>
+        About WiCyS @ Oregon State University
+    </h1>
+    <p>
+        Our mission is to help build a diverse cybersecurity workforce by facilitating the recruitment, retention, and advancement of women in cybersecurity. However, this club is not exclusive to women or those identify as women, we accept all allies!
+    </p>
+
+    <h1>
+        Testimonies
+    </h1>
+    <p>
+        {{firstTestimony}}
+    </p>
+    <a href="/testimonials">See more Testimonies!</a>
+
+    <!-- <h1>
+        Give Us Your Feedback!
+    </h1>
+    <div class="centerForm">
+        <div class="formDiv">    
+            <form class="formContainer" id="testimonyForm">
+                <div class="formInputContainer">
+                    <label for="Name" class="formInputLabel">Name:</label>
+                    <div class="formInputElement">
+                        <input type="text" id="testimonyName" name="testimonyName" class="formInput">
+                    </div>
+                </div>
+
+                <div class="formInputContainer">
+                    <label for="Message" class="formInputLabel">Message:</label>
+                    <div class="formInputElement">
+                        <textarea id="testimonyInput" name="testimonyInput" class="formInput" wrap="soft" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="formInputContainer">
+                    <label for="Image" class="formInputLabel">Image:</label>
+                    <div class="formInputElement">
+                        <input type="text" id="testimonyImage" name="testimonyImage" class="formInput">
+                    </div>
+                </div>
+
+                <div class="formInputContainer">
+                    <div class="formInputElement formInputWidth" id="submitButtonContainer">
+                        <input type="button" value="Submit" class="buttons" id="testimonySubmit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> -->
+</div>
+        </main>
+    </body>
+
+    <footer>
+        <a href="https://discord.gg/PUv3Cz9PzK"><img src = "discord.png" width="50" height = "50"></a>
+        <a href="https://www.instagram.com/wicys_oregonstate/"><img src = "instagram.png" width="50" height = "50"></a>
+        <a href="contact.html"><img src = "email.png" width="50" height = "50"></a></a>
+    </footer>
+</html>
