@@ -21,4 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
             slides[currentSlide].classList.add('active');
         });
     }
+    // for invite link
+    if (window.location.pathname=="/contact.html"){
+        link=document.getElementById('ils');
+        link.setAttribute("href",atob("aHR0cHM6Ly9kaXNjb3JkLmdnL1BVdjNDejlQeks="));
+    }
 })
